@@ -2,11 +2,12 @@ import org.junit.Before;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 //import org.Mockito.mockito;
 
-class VolvoTest {
+public class VolvoTest {
     private Volvo volvoMock;
     @Before
     public void init() {
@@ -27,8 +28,6 @@ class VolvoTest {
         assertEquals(result,false);
     }
 
-
-    @Test
     public void isEmptyTest_returnsNotEmpty()
     {
         //Arrange – setup the testing objects and prepare the prerequisites for your test.
@@ -63,7 +62,6 @@ class VolvoTest {
     public void isEmptyTest_NoisySensors_returnsError(){
 
         //Volvo car = mock(Volvo.class);
-
     }
 
 
@@ -85,6 +83,35 @@ class VolvoTest {
         assertEquals(position_integer, car.MoveForward());
 
     }
+
+    @Test
+    public void TestMoveForward_EndOfStreet(){
+
+        //Arrange
+        Volvo car = new Volvo();
+        car.position = 500;
+        // boolean result = car.parking_situation[car.position];
+
+        //Act
+        boolean[] bool = car.MoveForward();
+        assertEquals(500, car.position);
+
+    }
+
+    @Test
+    public void TestMoveBackward_BeginningOfStreet(){
+
+        //Arrange
+        Volvo car = new Volvo();
+        car.position = 0;
+        // boolean result = car.parking_situation[car.position];
+
+        //Act
+        int test = car.MoveBackward();
+        assertEquals(500, car.position);
+
+    }
+
     @Test
     public void TestBackward(){
 
@@ -95,4 +122,25 @@ class VolvoTest {
 
     }
 
+    @Test
+    public void TestPark(){
+
+        Volvo car = new Volvo();
+        boolean parked;
+        car.Park();
+        parked = car.isParked();
+        assertEquals(parked, true);
+
+    }
+
+    @Test
+    public void TestUnPark(){
+
+        Volvo car = new Volvo();
+        boolean parked;
+        car.UnPark();
+        parked = car.isParked();
+        assertEquals(parked, false);
+
+    }
 }
