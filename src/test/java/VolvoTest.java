@@ -152,8 +152,7 @@ public class VolvoTest {
     @Test
     public void TestPark_NoFreeParkingSpots()
     {
-        for(int i = 0; i < car.parking_situation.length; i++) //sets all spots to occupied
-            car.parking_situation[i] = false;
+        java.util.Arrays.fill(car.parking_situation, false );
         //when(volvoMock.checkIfFreeParkingSpot()).thenReturn(false); //
         //assertFalse(volvoMock.isParked());
         boolean result = car.Park();

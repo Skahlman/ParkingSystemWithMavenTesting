@@ -81,16 +81,19 @@ public class Volvo implements Car {
     if(isParked) //if it is already parked, then return
         return false; //did not park because it is already parked
     
-    while(position < 500)
+
+    while(this.position < 499)
     {
-        boolean canPark = checkIfFreeParkingSpot(); //check if the latest 5 metres are free
+        //boolean canPark = checkIfFreeParkingSpot(); //check if the latest 5 metres are free
+        boolean canPark = false;
         if(canPark)
         {
             isParked = true;
             return true; //succeded to park
         }
         
-        MoveForward();
+        //this.position++;
+       boolean[] move_fwd =  MoveForward();
     }
 
     return false;
