@@ -18,7 +18,7 @@ public class Volvo implements Car {
 
     @Override
     public boolean[] MoveForward() {
-        if(position != 500) // if the car is not at the end of the street -> move forward
+        if(position != 499) // if the car is not at the end of the street -> move forward
             this.position++;
         else // don't move forward, just return the same parking situation
             return parking_situation;
@@ -78,7 +78,6 @@ public class Volvo implements Car {
     if(isParked) //if it is already parked, then return
         return;
     
-    
     while(position < 500)
     {
         boolean canPark = checkIfFreeParkingSpot(); //check if the latest 5 metres are free
@@ -90,10 +89,8 @@ public class Volvo implements Car {
         
         MoveForward();
     }
-    isParked = false;
-      
-        
-            
+    
+           
     }
 
     @Override

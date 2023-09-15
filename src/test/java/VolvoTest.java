@@ -150,6 +150,18 @@ public class VolvoTest {
     }
 
     @Test
+    public void TestPark_NoFreeParkingSpots()
+    {
+        init();
+        assertNotNull(volvoMock);
+        
+        when(volvoMock.checkIfFreeParkingSpot()).thenReturn(false); //
+        volvoMock.Park();
+        assertFalse(volvoMock.isParked());
+
+    }
+
+    @Test
     public void TestUnPark(){
 
         Volvo car = new Volvo();
