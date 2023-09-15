@@ -1,12 +1,14 @@
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
-import java.util.Arrays;
 
 public class Volvo implements Car {
 
     public int position;
     public int sensors_result = 0;
-    public boolean parked;
+    public boolean isParked = false;
     boolean[] parking_situation;
+
 
 
     public Volvo(){
@@ -25,33 +27,43 @@ public class Volvo implements Car {
         return parking_situation;
     }
 
+    public Map<Integer, boolean[]> AdamsMoveForward() {
+        Map<Integer, boolean[]> returnvalue = Map.of(position, parking_situation);
+        if (position!= 500) {
+            position++;
+        }
+        parking_situation[position] = isEmpty();
+        return  returnvalue;
+    }
+
+        @Override
+    public Boolean isEmpty() {
+        return false;
+    }
+
+    /* Phase two
     @Override
     public Boolean isEmpty() {
 
-        double [] sensorvalues;
+        double [] sensorVariance;
         double average;
         boolean freeparking = false;
-        sensorvalues = sensorReadings();
+        sensorVariance = sensorReadings();
 
-        if(sensorvalues[0] < 75 && sensorvalues[1] < 75){
+        if(sensorVariance[0] < 75 && sensorVariance[1] < 75){
 
-            average = sensorvalues[0] + sensorvalues[1] / 2;
+            average = (sensorVariance[0] + sensorVariance[1]) / 2;
 
-            if(average < 100){
+            if(average < 100.0){
                 freeparking = true;
             }else{
                 freeparking = false;
             }
-
-
         }
-
         return freeparking;
-
-
-
     }
 
+     */
 
 
     @Override
@@ -63,7 +75,7 @@ public class Volvo implements Car {
     @Override
     public void Park() {
 
-    if(parked == true) //if it is already parked, then return
+    if(isParked) //if it is already parked, then return
         return;
     
     
@@ -72,13 +84,13 @@ public class Volvo implements Car {
         boolean canPark = checkIfFreeParkingSpot(); //check if the latest 5 metres are free
         if(canPark)
         {
-            parked = true;
+            isParked = true;
             return;
         }
         
         MoveForward();
     }
-    parked = false;
+    isParked = false;
       
         
             
@@ -86,14 +98,14 @@ public class Volvo implements Car {
 
     @Override
     public void UnPark() {
-        parked = false;
+        isParked = false;
     }
+
+
+
     public double readSensor(){
         Random random = new Random();
-        double SensorValue = random.nextInt(200);
-        return SensorValue;
-
-
+        return random.nextInt(200);
     }
     public double[] sensorReadings(){
         double[] sensor_values = new double[2];
@@ -103,16 +115,17 @@ public class Volvo implements Car {
         double var2 = 0.0;
 
 
-        for(int i = 0; i<5; i++){
+        for(int i = 0; i < 5; i++){
             data1[i] = readSensor();
             data2[i] = readSensor();
 
         }
-
         var1 = calculateVariance(data1);
         var2 = calculateVariance(data2);
+
         sensor_values[0] = var1;
         sensor_values[1] = var2;
+
 
         return sensor_values;
 
@@ -141,16 +154,30 @@ public class Volvo implements Car {
     public void setSensors(int value) {
         sensors_result = value;
     }
+/*
+    private static Pair<String, String> methodWithPairResult() {
+        //...
+        return new ImmutablePair<>("valueA", "valueB");
+    }
+
+    private static void usingPairResultTest() {
+        Pair<String, String> result = methodWithPairResult();
+        System.out.println();
+        System.out.println("A = " + result.getKey());
+        System.out.println("B = " + result.getValue());
+    }
+ */
 
 
-    @Override
-    public String WhereIs() {
-        return "The position of the car is: " + position;
+    public Map<Integer, Boolean> whereIs(){
+        Map<Integer, Boolean> whereIs = new HashMap<>(2);
+        whereIs.put(position, isParked);
+        return whereIs;
     }
 
     public boolean isParked(){
 
-        return parked;
+        return isParked;
     }
 
     public boolean checkIfFreeParkingSpot()

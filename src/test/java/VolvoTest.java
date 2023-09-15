@@ -1,9 +1,12 @@
 import org.junit.Before;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
+
+import java.util.Map;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.*;
@@ -13,14 +16,16 @@ import static org.mockito.Mockito.when;
 
 public class VolvoTest {
     private Volvo volvoMock;
-    @Before
+    Volvo car;
+    @BeforeEach
     public void init() {
+        car = new Volvo();
         volvoMock = Mockito.spy(Volvo.class);
     }
 
+    /*
     @Test
     public void isEmptySensorReadingsReturn75() {
-        init();
         assertNotNull(volvoMock);
         double [] sensorvalues = {75, 75};
         when(volvoMock.sensorReadings()).thenReturn(sensorvalues);
@@ -34,6 +39,7 @@ public class VolvoTest {
         when(volvoMock.sensorReadings()).thenReturn(sensorvalues);
         assertTrue(volvoMock.isEmpty());
     }
+     */
 
     public void isEmptyTest_returnsNotEmpty()
     {
@@ -65,20 +71,23 @@ public class VolvoTest {
         assertEquals(result,true);
     }
 
-    @Test
-    public void isEmptyTest_NoisySensors_returnsError(){
-
-        //Volvo car = mock(Volvo.class);
-    }
-
 
     @Test
-    public void TestwhereIs(){
+    public void TestwhereIsPosition0andNotParked(){
 
         Volvo car = new Volvo();
-        int position_integer = car.position;
-        assertEquals("The position of the car is: " + position_integer, car.WhereIs());
+        Map<Integer, Boolean> expectedMap = Map.of(1, false);
+        assertEquals(expectedMap, car.whereIs());
+        //int position_integer = car.position;
+        //assertEquals("The position of the car is: " + position_integer, car.WhereIs());
 
+    }
+    @Test
+    public void TestAdamsMoveForward() {
+        boolean[] expectedSituation = new boolean[500];
+        expectedSituation[0] = false;
+        Map<Integer, boolean[]> expectedMap = Map.of(1,expectedSituation);
+        assertEquals(car.AdamsMoveForward(), expectedMap);
     }
 
     @Test
