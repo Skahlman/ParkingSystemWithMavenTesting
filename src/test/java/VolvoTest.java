@@ -1,31 +1,38 @@
 import org.junit.Before;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
 import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
+
 //import org.Mockito.mockito;
 
 public class VolvoTest {
     private Volvo volvoMock;
     @Before
     public void init() {
-        volvoMock = Mockito.mock((Volvo.class));
-
+        volvoMock = Mockito.spy(Volvo.class);
     }
 
-
     @Test
-    public void isEmptyTest_BothSensorWorking() {
-        int sensorReading = 50;
-        when(volvoMock.readSensor()).thenReturn(sensorReading);
-
-        //Act – perform the actual work of the test.
-
-
-        // Assert – verify the result.
-        assertEquals(result,false);
+    public void isEmptySensorReadingsReturn75() {
+        init();
+        assertNotNull(volvoMock);
+        double [] sensorvalues = {75, 75};
+        when(volvoMock.sensorReadings()).thenReturn(sensorvalues);
+        assertFalse(volvoMock.isEmpty());
+    }
+    @Test
+    public void isEmptySensorReadingsReturn74() {
+        init();
+        assertNotNull(volvoMock);
+        double [] sensorvalues = {74, 74};
+        when(volvoMock.sensorReadings()).thenReturn(sensorvalues);
+        assertTrue(volvoMock.isEmpty());
     }
 
     public void isEmptyTest_returnsNotEmpty()

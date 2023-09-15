@@ -71,7 +71,7 @@ public class Volvo implements Car {
     }
     public double readSensor(){
         Random random = new Random();
-        double SensorValue = (double)random.nextInt(200);
+        double SensorValue = random.nextInt(200);
         return SensorValue;
 
 
@@ -96,9 +96,6 @@ public class Volvo implements Car {
         sensor_values[1] = var2;
 
         return sensor_values;
-
-
-
 
     }
     public static double calculateVariance(double[] data) {
