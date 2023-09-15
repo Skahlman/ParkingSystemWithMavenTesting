@@ -63,13 +63,24 @@ public class Volvo implements Car {
     @Override
     public void Park() {
 
+    if(parked == true) //if it is already parked, then return
+        return;
+    
+    
+    while(position < 500)
+    {
         boolean canPark = checkIfFreeParkingSpot(); //check if the latest 5 metres are free
         if(canPark)
         {
             parked = true;
             return;
         }
+        
         MoveForward();
+    }
+    parked = false;
+      
+        
             
     }
 
