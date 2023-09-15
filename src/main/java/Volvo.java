@@ -62,7 +62,15 @@ public class Volvo implements Car {
 
     @Override
     public void Park() {
-        parked = true;
+
+        boolean canPark = checkIfFreeParkingSpot(); //check if the latest 5 metres are free
+        if(canPark)
+        {
+            parked = true;
+            return;
+        }
+        MoveForward();
+            
     }
 
     @Override
@@ -132,5 +140,18 @@ public class Volvo implements Car {
     public boolean isParked(){
 
         return parked;
+    }
+
+    public boolean checkIfFreeParkingSpot()
+    {
+        //boolean free = true;
+        for(int i = position; i > position-5; i--)
+        {
+            if(!parking_situation[i]) // if one of the 5 meters is occupied, return false
+                return false;
+                
+        }
+
+        return true; // there is a free parking spot
     }
 }
