@@ -68,15 +68,18 @@ public class Volvo implements Car {
 
     @Override
     public int MoveBackward() {
+
+        if(position == 0)
+            return 0; //can't move backwards if beginning of street
         this.position = this.position - 1;
         return this.position;
     }
 
     @Override
-    public void Park() {
+    public boolean Park() {
 
     if(isParked) //if it is already parked, then return
-        return;
+        return false; //did not park because it is already parked
     
     while(position < 500)
     {
@@ -84,13 +87,14 @@ public class Volvo implements Car {
         if(canPark)
         {
             isParked = true;
-            return;
+            return true; //succeded to park
         }
         
         MoveForward();
     }
-    
-           
+
+    return false;
+        
     }
 
     @Override
@@ -180,6 +184,8 @@ public class Volvo implements Car {
     public boolean checkIfFreeParkingSpot()
     {
         //boolean free = true;
+        if(position < 5)
+            return false;
         for(int i = position; i > position-5; i--)
         {
             if(!parking_situation[i]) // if one of the 5 meters is occupied, return false

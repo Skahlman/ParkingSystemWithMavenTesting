@@ -53,7 +53,7 @@ public interface Car {
      Test-cases: The car is/isn't parked, the car is within the boundaries of the street
 
      */
-    void Park();
+    boolean Park();
 
     /**
 
