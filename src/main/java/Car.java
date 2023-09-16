@@ -12,9 +12,9 @@ public interface Car {
      Test-cases: If the car is at the end of the street
 
      */
-    boolean[] MoveForward();
+    //boolean[] MoveForward();
 
-    MoveReturnStruct AdamsMoveForward();
+    MoveReturnStruct MoveForward();
 
     /**
 
@@ -42,7 +42,7 @@ public interface Car {
      Test-cases: The car's position is at the beginning of the street and at another, unspecified, position in the street
 
      */
-    int MoveBackward();
+    MoveReturnStruct MoveBackward();
 
     /**
 
@@ -83,7 +83,7 @@ public interface Car {
 
      */
 
-
+     whereIsReturnStruct whereIs();
 
 
 

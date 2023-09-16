@@ -16,8 +16,10 @@ import static org.mockito.Mockito.when;
 //hello emleie test
 
 public class VolvoTest {
+
     private Volvo volvoMock;
     Volvo car;
+
     @BeforeEach
     public void init() {
         car = new Volvo();
@@ -70,13 +72,13 @@ public class VolvoTest {
 
     }
     @Test
-    public void TestAdamsMoveForward() {
-        assertEquals(car.AdamsMoveForward().position(),1);
+    public void TestMoveForward_SuccessfullyMovesForward() { //test adam move forward
+        assertEquals(car.MoveForward().position(),1);
     }
     @Test
-    public void TestAdamsMoveBackward() {
+    public void TestMoveBackward_SuccessfullyMovesBackward() { //Adams move backward
         car.position = 2;
-        assertEquals(car.AdamMoveBackwards().position(),1);
+        assertEquals(car.MoveBackward().position(),1);
     }
     //Old test using maps
     /*
@@ -89,7 +91,7 @@ public class VolvoTest {
     }*/
 
     @Test
-    public void TestMoveForward(){
+    public void TestMoveForward(){ 
 
         Volvo car = new Volvo();
         int position_integer = car.position;
@@ -99,7 +101,7 @@ public class VolvoTest {
     }
 
     //@Test
-    public void TestMoveForward_EndOfStreet(){
+    public void TestMoveForward_EndOfStreet_CanNotMoveForward(){
 
         //Arrange
         Volvo car = new Volvo();
@@ -107,13 +109,13 @@ public class VolvoTest {
         // boolean result = car.parking_situation[car.position];
 
         //Act
-        boolean[] bool = car.MoveForward();
+        MoveReturnStruct move = car.MoveForward();
         assertEquals(500, car.position);
 
     }
 
     @Test
-    public void TestMoveBackward_BeginningOfStreet(){
+    public void TestMoveBackward_BeginningOfStreet_CanNotMoveBackward(){
 
         //Arrange
         //Volvo car = new Volvo();
@@ -121,13 +123,13 @@ public class VolvoTest {
         // boolean result = car.parking_situation[car.position];
 
         //Act
-        int test = car.MoveBackward();
+        MoveReturnStruct move = car.MoveBackward();
         assertEquals(0, car.position);
 
     }
 
     @Test
-    public void TestBackward(){
+    public void TestBackward_SuccessfullyMovesBackward(){
 
         Volvo car = new Volvo();
         int position_integer = car.position;
@@ -136,11 +138,15 @@ public class VolvoTest {
 
     }
 
-    @Test
-    public void TestPark(){
+    // PARK TEST
 
-        Volvo car = new Volvo();
+    @Test
+    public void TestPark_ParkingSuccessfull(){
+
+        java.util.Arrays.fill(car.parking_situation, true ); //byt till adams srructs
+        //Volvo car = new Volvo();
         boolean parked;
+        car.isParked = false;
         car.Park();
         parked = car.isParked();
         assertEquals(parked, true);
@@ -148,7 +154,7 @@ public class VolvoTest {
     }
 
     @Test
-    public void TestPark_NoFreeParkingSpots()
+    public void TestPark_NoFreeParkingSpots_CouldNotPark()
     {
         java.util.Arrays.fill(car.parking_situation, false );
         //when(volvoMock.checkIfFreeParkingSpot()).thenReturn(false); //
@@ -159,14 +165,26 @@ public class VolvoTest {
 
     }
 
+    //UNPARK TESTS
+
     @Test
-    public void TestUnPark(){
+    public void TestUnPark_CarIsParked_UnParkingSuccessfull(){
 
         Volvo car = new Volvo();
         boolean parked;
         car.UnPark();
         parked = car.isParked();
         assertEquals(parked, false);
+
+    }
+
+    @Test
+    public void TestUnPark_CarNotParked_DoNothing(){
+
+        car.isParked = false; //the car is not parked
+        car.UnPark();
+        assertFalse(car.isParked);
+
 
     }
 }
