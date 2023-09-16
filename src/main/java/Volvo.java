@@ -29,10 +29,14 @@ public class Volvo implements Car {
 
     @Override
     public MoveReturnStruct MoveForward() { //AdamsMoveForward
-        if(position != 499) // if the car is not at the end of the street -> move forward
+
+        if(this.isParked) //if the car is parked, it can't move forward
+            return new MoveReturnStruct(position, parking_situation); 
+
+        if(position != 500) // if the car is not at the end of the street -> move forward 
             this.position++;
         else // don't move forward, just return the same parking situation
-            return new MoveReturnStruct(position, parking_situation); //Maybe generate an error message
+            return new MoveReturnStruct(position, parking_situation); // the car is at the end of the street
 
         parking_situation[position] = isEmpty(); // sets the position to empty or not empty
         return new MoveReturnStruct(position, parking_situation);
@@ -40,7 +44,13 @@ public class Volvo implements Car {
 
         @Override
     public Boolean isEmpty() {
-        return false;
+
+        if(parking_situation[position] == true)  //if free place
+        {
+            return true;
+        }
+        return false; //change this so that park() tests would work
+
     }
 
     /* Phase two
@@ -95,14 +105,13 @@ public class Volvo implements Car {
     while(this.position < 499)
     {
         boolean canPark = checkIfFreeParkingSpot(); //check if the latest 5 metres are free
-        //boolean canPark = false;
+      
         if(canPark)
         {
             isParked = true;
             return true; //succeded to park
         }
         
-        //this.position++;
        MoveReturnStruct move_fwd =  MoveForward();
 
     }
