@@ -23,7 +23,7 @@ public class VolvoTest {
         volvoMock = Mockito.spy(Volvo.class);
     }
 
-    /*
+    /* Phase 2
     @Test
     public void isEmptySensorReadingsReturn75() {
         assertNotNull(volvoMock);
@@ -40,20 +40,6 @@ public class VolvoTest {
         assertTrue(volvoMock.isEmpty());
     }
      */
-
-    public void isEmptyTest_returnsNotEmpty()
-    {
-        //Arrange – setup the testing objects and prepare the prerequisites for your test.
-        Volvo car = new Volvo();
-        car.setSensors(200);
-
-
-        //Act – perform the actual work of the test.
-        Boolean result = car.isEmpty();
-
-        // Assert – verify the result.
-        assertEquals(result,false);
-    }
 
 
 
@@ -84,11 +70,22 @@ public class VolvoTest {
     }
     @Test
     public void TestAdamsMoveForward() {
+        assertEquals(car.AdamsMoveForward().position(),1);
+    }
+    @Test
+    public void TestAdamsMoveBackward() {
+        car.position = 2;
+        assertEquals(car.AdamMoveBackwards().position(),1);
+    }
+    //Old test using maps
+    /*
+    @Test
+    public void TestAdamMoveBackwards() {
         boolean[] expectedSituation = new boolean[500];
         expectedSituation[0] = false;
         Map<Integer, boolean[]> expectedMap = Map.of(1,expectedSituation);
         assertEquals(car.AdamsMoveForward(), expectedMap);
-    }
+    }*/
 
     @Test
     public void TestMoveForward(){

@@ -4,13 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aee07831-ca44-4f4e-adad-ddc26dbbb2d9" name="Changes" comment="Weird stuff with branches">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/MoveReturnStruct.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/whereIsReturnStruct.java" afterDir="false" />
+    <list default="true" id="aee07831-ca44-4f4e-adad-ddc26dbbb2d9" name="Changes" comment="Weird stuff with branches and redone some projects">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Car.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Car.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Volvo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Volvo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/VolvoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/VolvoTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,7 +61,17 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.VolvoTest.TestAdamsMoveForward">
+  <component name="RunManager" selected="JUnit.VolvoTest.TestAdamsMoveBackward">
+    <configuration name="VolvoTest.TestAdamsMoveBackward" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ParkingProjectWithMaven" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="VolvoTest" />
+      <option name="METHOD_NAME" value="TestAdamsMoveBackward" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="VolvoTest.TestAdamsMoveForward" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ParkingProjectWithMaven" />
       <option name="PACKAGE_NAME" value="" />
@@ -107,6 +114,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.VolvoTest.TestAdamsMoveBackward" />
         <item itemvalue="JUnit.VolvoTest.TestAdamsMoveForward" />
         <item itemvalue="JUnit.VolvoTest.TestwhereIs" />
         <item itemvalue="JUnit.VolvoTest.isEmptySensorReadingsReturn75" />
@@ -153,7 +161,14 @@
       <option name="project" value="LOCAL" />
       <updated>1694856348872</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Weird stuff with branches and redone some projects">
+      <created>1694861659641</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1694861659641</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -170,7 +185,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="origin/main" />
+                        <option value="origin/Adam" />
                       </list>
                     </value>
                   </entry>
@@ -187,7 +202,8 @@
     <MESSAGE value="UpdatedFiles" />
     <MESSAGE value="Added 2 mockito tests" />
     <MESSAGE value="Weird stuff with branches" />
-    <option name="LAST_COMMIT_MESSAGE" value="Weird stuff with branches" />
+    <MESSAGE value="Weird stuff with branches and redone some projects" />
+    <option name="LAST_COMMIT_MESSAGE" value="Weird stuff with branches and redone some projects" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>

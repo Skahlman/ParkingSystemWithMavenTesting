@@ -27,7 +27,7 @@ public class Volvo implements Car {
         return parking_situation;
     }
 
-    @Override
+
     public MoveReturnStruct AdamsMoveForward() {
         if(position != 499) // if the car is not at the end of the street -> move forward
             this.position++;
@@ -76,6 +76,7 @@ public class Volvo implements Car {
         this.position = this.position - 1;
         return this.position;
     }
+
     public MoveReturnStruct AdamMoveBackwards() {
         if(position == 0)
             return new MoveReturnStruct(0,parking_situation); //can't move backwards if beginning of street
