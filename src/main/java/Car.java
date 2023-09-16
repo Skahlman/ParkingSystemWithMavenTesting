@@ -14,6 +14,8 @@ public interface Car {
      */
     boolean[] MoveForward();
 
+    MoveReturnStruct AdamsMoveForward();
+
     /**
 
      Description: This method queries the two ultrasound sensors at least 5 times and filters the noise

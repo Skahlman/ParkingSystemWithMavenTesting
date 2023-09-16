@@ -21,19 +21,21 @@ public class Volvo implements Car {
         if(position != 499) // if the car is not at the end of the street -> move forward
             this.position++;
         else // don't move forward, just return the same parking situation
-            return parking_situation;
+            return parking_situation; //Maybe generate an error message
 
         parking_situation[position] = isEmpty(); // sets the position to empty or not empty
         return parking_situation;
     }
 
-    public Map<Integer, boolean[]> AdamsMoveForward() {
-        Map<Integer, boolean[]> returnvalue = Map.of(position, parking_situation);
-        if (position!= 500) {
-            position++;
-        }
-        parking_situation[position] = isEmpty();
-        return  returnvalue;
+    @Override
+    public MoveReturnStruct AdamsMoveForward() {
+        if(position != 499) // if the car is not at the end of the street -> move forward
+            this.position++;
+        else // don't move forward, just return the same parking situation
+            return new MoveReturnStruct(position, parking_situation); //Maybe generate an error message
+
+        parking_situation[position] = isEmpty(); // sets the position to empty or not empty
+        return new MoveReturnStruct(position, parking_situation);
     }
 
         @Override
@@ -73,6 +75,12 @@ public class Volvo implements Car {
             return 0; //can't move backwards if beginning of street
         this.position = this.position - 1;
         return this.position;
+    }
+    public MoveReturnStruct AdamMoveBackwards() {
+        if(position == 0)
+            return new MoveReturnStruct(0,parking_situation); //can't move backwards if beginning of street
+        this.position = this.position - 1;
+        return new MoveReturnStruct(position, parking_situation);
     }
 
     @Override
@@ -158,21 +166,10 @@ public class Volvo implements Car {
     public void setSensors(int value) {
         sensors_result = value;
     }
-/*
-    private static Pair<String, String> methodWithPairResult() {
-        //...
-        return new ImmutablePair<>("valueA", "valueB");
+
+    public whereIsReturnStruct AdamswhereIs() {
+        return new whereIsReturnStruct(position,isParked);
     }
-
-    private static void usingPairResultTest() {
-        Pair<String, String> result = methodWithPairResult();
-        System.out.println();
-        System.out.println("A = " + result.getKey());
-        System.out.println("B = " + result.getValue());
-    }
- */
-
-
     public Map<Integer, Boolean> whereIs(){
         Map<Integer, Boolean> whereIs = new HashMap<>(2);
         whereIs.put(position, isParked);
