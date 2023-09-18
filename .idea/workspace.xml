@@ -5,6 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="aee07831-ca44-4f4e-adad-ddc26dbbb2d9" name="Changes" comment="Added 2 mockito tests">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/MoveReturnStruct.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/whereIsReturnStruct.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Car.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Car.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Volvo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Volvo.java" afterDir="false" />
@@ -21,10 +24,16 @@
         <option value="Interface" />
         <option value="JUnit5 Test Class" />
         <option value="Class" />
+        <option value="Record" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="Adam" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -38,6 +47,7 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
@@ -55,7 +65,17 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.VolvoTest.TestAdamsMoveForward">
+  <component name="RunManager" selected="JUnit.VolvoTest.TestMoveForward_CarIsParked_DontMoveForward">
+    <configuration name="VolvoTest.TestAdamsMoveBackward" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ParkingProjectWithMaven" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="VolvoTest" />
+      <option name="METHOD_NAME" value="TestAdamsMoveBackward" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="VolvoTest.TestAdamsMoveForward" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ParkingProjectWithMaven" />
       <option name="PACKAGE_NAME" value="" />
@@ -66,31 +86,31 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="VolvoTest.TestwhereIs" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="VolvoTest.TestMoveForward_CarIsParked_DontMoveForward" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ParkingProjectWithMaven" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="VolvoTest" />
-      <option name="METHOD_NAME" value="TestwhereIs" />
+      <option name="METHOD_NAME" value="TestMoveForward_CarIsParked_DontMoveForward" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="VolvoTest.isEmptySensorReadingsReturn74" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="VolvoTest.TestMoveForward_EndOfStreet_CanNotMoveForward" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ParkingProjectWithMaven" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="VolvoTest" />
-      <option name="METHOD_NAME" value="isEmptySensorReadingsReturn74" />
+      <option name="METHOD_NAME" value="TestMoveForward_EndOfStreet_CanNotMoveForward" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="VolvoTest.isEmptySensorReadingsReturn75" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="VolvoTest.TestMoveForward_SuccessfullyMovesForward" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ParkingProjectWithMaven" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="VolvoTest" />
-      <option name="METHOD_NAME" value="isEmptySensorReadingsReturn75" />
+      <option name="METHOD_NAME" value="TestMoveForward_SuccessfullyMovesForward" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -98,10 +118,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.VolvoTest.TestMoveForward_CarIsParked_DontMoveForward" />
+        <item itemvalue="JUnit.VolvoTest.TestMoveForward_EndOfStreet_CanNotMoveForward" />
+        <item itemvalue="JUnit.VolvoTest.TestMoveForward_SuccessfullyMovesForward" />
+        <item itemvalue="JUnit.VolvoTest.TestAdamsMoveBackward" />
         <item itemvalue="JUnit.VolvoTest.TestAdamsMoveForward" />
-        <item itemvalue="JUnit.VolvoTest.TestwhereIs" />
-        <item itemvalue="JUnit.VolvoTest.isEmptySensorReadingsReturn75" />
-        <item itemvalue="JUnit.VolvoTest.isEmptySensorReadingsReturn74" />
       </list>
     </recent_temporary>
   </component>
@@ -115,6 +136,7 @@
       <updated>1694593749021</updated>
       <workItem from="1694593750693" duration="5094000" />
       <workItem from="1694759598512" duration="13744000" />
+      <workItem from="1695023255680" duration="3860000" />
     </task>
     <task id="LOCAL-00001" summary="New Project With Maven And Mockito">
       <created>1694597297728</created>
@@ -137,7 +159,28 @@
       <option name="project" value="LOCAL" />
       <updated>1694765014667</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Weird stuff with branches">
+      <created>1694856348872</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1694856348872</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Weird stuff with branches and redone some projects">
+      <created>1694861659641</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1694861659641</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Added some tests for the Adam Functions">
+      <created>1694864402874</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1694864402874</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -148,7 +191,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="origin/Emelie" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
@@ -158,6 +213,16 @@
     <MESSAGE value="New Project With Maven And Mockito" />
     <MESSAGE value="UpdatedFiles" />
     <MESSAGE value="Added 2 mockito tests" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added 2 mockito tests" />
+    <MESSAGE value="Weird stuff with branches" />
+    <MESSAGE value="Weird stuff with branches and redone some projects" />
+    <MESSAGE value="Added some tests for the Adam Functions" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added some tests for the Adam Functions" />
+  </component>
+  <component name="XDebuggerManager">
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo parentTag="Volvo" memberName="parking_situation" />
+      </pinned-members>
+    </pin-to-top-manager>
   </component>
 </project>

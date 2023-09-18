@@ -16,29 +16,41 @@ public class Volvo implements Car {
         this.parking_situation = new boolean[500]; //initialize parking spots
     }
 
+    // @Override
+    // public boolean[] MoveForward() { //gammal MoveForward
+    //     if(position != 499) // if the car is not at the end of the street -> move forward
+    //         this.position++;
+    //     else // don't move forward, just return the same parking situation
+    //         return parking_situation; //Maybe generate an error message
+
+    //     parking_situation[position] = isEmpty(); // sets the position to empty or not empty
+    //     return parking_situation;
+    // }
+
     @Override
-    public boolean[] MoveForward() {
-        if(position != 499) // if the car is not at the end of the street -> move forward
+    public MoveReturnStruct MoveForward() { //AdamsMoveForward
+
+        if(this.isParked) //if the car is parked, it can't move forward
+            return new MoveReturnStruct(position, parking_situation); 
+
+        if(position != 500) // if the car is not at the end of the street -> move forward 
             this.position++;
         else // don't move forward, just return the same parking situation
-            return parking_situation;
+            return new MoveReturnStruct(position, parking_situation); // the car is at the end of the street
 
         parking_situation[position] = isEmpty(); // sets the position to empty or not empty
-        return parking_situation;
-    }
-
-    public Map<Integer, boolean[]> AdamsMoveForward() {
-        Map<Integer, boolean[]> returnvalue = Map.of(position, parking_situation);
-        if (position!= 500) {
-            position++;
-        }
-        parking_situation[position] = isEmpty();
-        return  returnvalue;
+        return new MoveReturnStruct(position, parking_situation);
     }
 
         @Override
     public Boolean isEmpty() {
-        return false;
+
+        if(parking_situation[position] == true)  //if free place
+        {
+            return true;
+        }
+        return false; //change this so that park() tests would work
+
     }
 
     /* Phase two
@@ -66,13 +78,21 @@ public class Volvo implements Car {
      */
 
 
-    @Override
-    public int MoveBackward() {
+    
+    // public int MoveBackward() { //gammal MoveBackwards
 
+    //     if(position == 0)
+    //         return 0; //can't move backwards if beginning of street
+    //     this.position = this.position - 1;
+    //     return this.position;
+    // }
+
+    @Override
+    public MoveReturnStruct MoveBackward() {
         if(position == 0)
-            return 0; //can't move backwards if beginning of street
-        this.position = this.position - 1;  //Moves the car backward with one step
-        return this.position;   //Returns the position of the car
+            return new MoveReturnStruct(0,parking_situation); //can't move backwards if beginning of street
+        this.position = this.position - 1;
+        return new MoveReturnStruct(position, parking_situation);
     }
 
     @Override
@@ -84,16 +104,16 @@ public class Volvo implements Car {
 
     while(this.position < 499)
     {
-        //boolean canPark = checkIfFreeParkingSpot(); //check if the latest 5 metres are free
-        boolean canPark = false;
+        boolean canPark = checkIfFreeParkingSpot(); //check if the latest 5 metres are free
+      
         if(canPark)
         {
             isParked = true;
             return true; //succeded to park
         }
         
-        //this.position++;
-       boolean[] move_fwd =  MoveForward();
+       MoveReturnStruct move_fwd =  MoveForward();
+
     }
 
     return false;
@@ -111,6 +131,7 @@ public class Volvo implements Car {
         Random random = new Random();   //Generates a random object 
         return random.nextInt(200); //Generates a random number
     }
+
     public double[] sensorReadings(){
         double[] sensor_values = new double[2];
         double[] data1 = new double[5];
@@ -134,6 +155,7 @@ public class Volvo implements Car {
         return sensor_values;   //Returns an array of sensor values; variance
 
     }
+
     public static double calculateVariance(double[] data) {
         // Step 1: Calculate the mean
         double sum = 0;
@@ -158,25 +180,10 @@ public class Volvo implements Car {
     public void setSensors(int value) {
         sensors_result = value;
     }
-/*
-    private static Pair<String, String> methodWithPairResult() {
-        //...
-        return new ImmutablePair<>("valueA", "valueB");
-    }
 
-    private static void usingPairResultTest() {
-        Pair<String, String> result = methodWithPairResult();
-        System.out.println();
-        System.out.println("A = " + result.getKey());
-        System.out.println("B = " + result.getValue());
-    }
- */
-
-
-    public Map<Integer, Boolean> whereIs(){
-        Map<Integer, Boolean> whereIs = new HashMap<>(2);
-        whereIs.put(position, isParked);
-        return whereIs;
+    @Override
+    public whereIsReturnStruct whereIs() {
+        return new whereIsReturnStruct(position,isParked);
     }
 
     public boolean isParked(){
