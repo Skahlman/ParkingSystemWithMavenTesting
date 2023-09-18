@@ -12,8 +12,8 @@ public class Volvo implements Car {
 
 
     public Volvo(){
-        this.position = 0;
-        this.parking_situation = new boolean[500];
+        this.position = 0;  //initialize the position to zero
+        this.parking_situation = new boolean[500]; //initialize parking spots
     }
 
     @Override
@@ -71,8 +71,8 @@ public class Volvo implements Car {
 
         if(position == 0)
             return 0; //can't move backwards if beginning of street
-        this.position = this.position - 1;
-        return this.position;
+        this.position = this.position - 1;  //Moves the car backward with one step
+        return this.position;   //Returns the position of the car
     }
 
     @Override
@@ -102,14 +102,14 @@ public class Volvo implements Car {
 
     @Override
     public void UnPark() {
-        isParked = false;
+        isParked = false;   //The car is not parked
     }
 
 
 
     public double readSensor(){
-        Random random = new Random();
-        return random.nextInt(200);
+        Random random = new Random();   //Generates a random object 
+        return random.nextInt(200); //Generates a random number
     }
     public double[] sensorReadings(){
         double[] sensor_values = new double[2];
@@ -120,18 +120,18 @@ public class Volvo implements Car {
 
 
         for(int i = 0; i < 5; i++){
-            data1[i] = readSensor();
-            data2[i] = readSensor();
+            data1[i] = readSensor();    //Reads sensors to the left
+            data2[i] = readSensor();    //Reads sensors to the right
 
         }
-        var1 = calculateVariance(data1);
-        var2 = calculateVariance(data2);
+        var1 = calculateVariance(data1);    //Calculate variance for left senor
+        var2 = calculateVariance(data2);    //Calculate variance for right sensor
 
-        sensor_values[0] = var1;
-        sensor_values[1] = var2;
+        sensor_values[0] = var1;    //End value of variance for sensor 1
+        sensor_values[1] = var2;    //End value of variance for sensor 2
 
 
-        return sensor_values;
+        return sensor_values;   //Returns an array of sensor values; variance
 
     }
     public static double calculateVariance(double[] data) {
