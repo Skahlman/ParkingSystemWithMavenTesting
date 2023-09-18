@@ -16,16 +16,6 @@ public class Volvo implements Car {
         this.parking_situation = new boolean[500];
     }
 
-    // @Override
-    // public boolean[] MoveForward() { //gammal MoveForward
-    //     if(position != 499) // if the car is not at the end of the street -> move forward
-    //         this.position++;
-    //     else // don't move forward, just return the same parking situation
-    //         return parking_situation; //Maybe generate an error message
-
-    //     parking_situation[position] = isEmpty(); // sets the position to empty or not empty
-    //     return parking_situation;
-    // }
 
     @Override
     public MoveReturnStruct MoveForward() { //AdamsMoveForward
@@ -42,54 +32,16 @@ public class Volvo implements Car {
         return new MoveReturnStruct(position, parking_situation);
     }
 
-        @Override
-    public Boolean isEmpty() {
-
-        if(parking_situation[position] == true)  //if free place
-        {
-            return true;
-        }
-        return false; //change this so that park() tests would work
-
-    }
-
-    /* Phase two
     @Override
     public Boolean isEmpty() {
-
-        double [] sensorVariance;
-        double average;
-        boolean freeparking = false;
-        sensorVariance = sensorReadings();
-
-        if(sensorVariance[0] < 75 && sensorVariance[1] < 75){
-
-            average = (sensorVariance[0] + sensorVariance[1]) / 2;
-
-            if(average < 100.0){
-                freeparking = true;
-            }else{
-                freeparking = false;
-            }
-        }
-        return freeparking;
+        return parking_situation[position]; //Returns true if position is empty
     }
 
-     */
 
-
-    
-    // public int MoveBackward() { //gammal MoveBackwards
-
-    //     if(position == 0)
-    //         return 0; //can't move backwards if beginning of street
-    //     this.position = this.position - 1;
-    //     return this.position;
-    // }
 
     @Override
     public MoveReturnStruct MoveBackward() {
-        if(position == 0)
+        if(position == 0) //Fulfills the testcase in which we can't go back if we're at the beginning of the street
             return new MoveReturnStruct(0,parking_situation); //can't move backwards if beginning of street
         this.position = this.position - 1;
         return new MoveReturnStruct(position, parking_situation);
@@ -100,24 +52,17 @@ public class Volvo implements Car {
 
     if(isParked) //if it is already parked, then return
         return false; //did not park because it is already parked
-    
 
-    while(this.position < 499)
-    {
-        boolean canPark = checkIfFreeParkingSpot(); //check if the latest 5 metres are free
+    while(this.position < 499) { //
+        boolean canPark = checkIfFreeParkingSpot(); //check if the latest 5 metres are free, fulfills the testcase "can park"
       
-        if(canPark)
-        {
+        if(canPark) { //Fulfills the testcase where the car is able to park
             isParked = true;
             return true; //succeded to park
         }
-        
-       MoveReturnStruct move_fwd =  MoveForward();
-
+        MoveForward();
     }
-
     return false;
-        
     }
 
     @Override
@@ -132,6 +77,8 @@ public class Volvo implements Car {
         return random.nextInt(200);
     }
 
+    //For phase 2
+    /*
     public double[] sensorReadings(){
         double[] sensor_values = new double[2];
         double[] data1 = new double[5];
@@ -155,6 +102,7 @@ public class Volvo implements Car {
         return sensor_values;
 
     }
+
 
     public static double calculateVariance(double[] data) {
         // Step 1: Calculate the mean
@@ -181,6 +129,8 @@ public class Volvo implements Car {
         sensors_result = value;
     }
 
+     */
+
     @Override
     public whereIsReturnStruct whereIs() {
         return new whereIsReturnStruct(position,isParked);
@@ -206,3 +156,27 @@ public class Volvo implements Car {
         return true; // there is a free parking spot
     }
 }
+
+/* Phase two
+    @Override
+    public Boolean isEmpty() {
+
+        double [] sensorVariance;
+        double average;
+        boolean freeparking = false;
+        sensorVariance = sensorReadings();
+
+        if(sensorVariance[0] < 75 && sensorVariance[1] < 75){
+
+            average = (sensorVariance[0] + sensorVariance[1]) / 2;
+
+            if(average < 100.0){
+                freeparking = true;
+            }else{
+                freeparking = false;
+            }
+        }
+        return freeparking;
+    }
+
+     */

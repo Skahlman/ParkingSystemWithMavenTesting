@@ -6,8 +6,6 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
-import java.util.Map;
-
 import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
@@ -122,25 +120,7 @@ public class VolvoTest {
         assertEquals(car.MoveBackward().position(),1);
     }
 
-    // @Test
-    // public void TestBackward_SuccessfullyMovesBackward(){
 
-    //     Volvo car = new Volvo();
-    //     int position_integer = car.position;
-    //     position_integer = position_integer -1;
-    //     assertEquals(position_integer, car.MoveBackward());
-
-    // }
-
-        //Old test using maps
-    /*
-    @Test
-    public void TestAdamMoveBackwards() {
-        boolean[] expectedSituation = new boolean[500];
-        expectedSituation[0] = false;
-        Map<Integer, boolean[]> expectedMap = Map.of(1,expectedSituation);
-        assertEquals(car.AdamsMoveForward(), expectedMap);
-    }*/
 
     // PARK TESTS
 
@@ -150,20 +130,17 @@ public class VolvoTest {
         java.util.Arrays.fill(car.parking_situation, true);
         boolean parked;
         car.isParked = false;
-        parked = car.isParked();
-        assertEquals(parked, true);
+        //Act
+        parked = car.Park();
+        //Assert
+        assertEquals(true, parked);
     }
 
     @Test
-    public void TestPark_NoFreeParkingSpots_CouldNotPark()
-    {
+    public void TestPark_NoFreeParkingSpots_CouldNotPark() {
         java.util.Arrays.fill(car.parking_situation, false );
-        //when(volvoMock.checkIfFreeParkingSpot()).thenReturn(false); //
-        //assertFalse(volvoMock.isParked());
         boolean result = car.Park();
-
         assertFalse(result);
-
     }
 
     @Test
@@ -171,12 +148,10 @@ public class VolvoTest {
         car.isParked = true;
         boolean park = car.Park();
         assertFalse(park); //did not park successfully since it is already parked
-        
     }
 
     @Test
-    public void TestPark_EndOfStreetAndFree5MetersBehind_DontPark()
-    {
+    public void TestPark_EndOfStreetAndFree5MetersBehind_DontPark() {
         car.position = 500;
         java.util.Arrays.fill(car.parking_situation, true);
         boolean park = car.Park();
@@ -189,23 +164,18 @@ public class VolvoTest {
 
     @Test
     public void TestUnPark_CarIsParked_UnParkingSuccessfull(){
-
-        Volvo car = new Volvo();
+        car.isParked = true;
         boolean parked;
         car.UnPark();
         parked = car.isParked();
-        assertEquals(parked, false);
-
+        assertFalse(parked);
     }
 
     @Test
     public void TestUnPark_CarNotParked_DoNothing(){
-
         car.isParked = false; //the car is not parked
         car.UnPark();
         assertFalse(car.isParked);
-
-
     }
 
 
