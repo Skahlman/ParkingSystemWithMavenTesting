@@ -185,11 +185,6 @@ public class Volvo implements Car {
     public whereIsReturnStruct whereIs() {
         return new whereIsReturnStruct(position,isParked);
     }
-    // public Map<Integer, Boolean> whereIs(){
-    //     Map<Integer, Boolean> whereIs = new HashMap<>(2);
-    //     whereIs.put(position, isParked);
-    //     return whereIs;
-    // }
 
     public boolean isParked(){
 

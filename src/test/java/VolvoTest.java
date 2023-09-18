@@ -30,33 +30,37 @@ public class VolvoTest {
     @Test
     public void TestisEmpty_returnsTrue()
     {
-        //Arrange – position is 0 and that metre is free
+        // Arrange – position is 0 and that metre is free
         car.position = 0;
         car.parking_situation[0] = true;
-        //Act – perform the actual work of the test.
+        // Act – perform the actual work of the test.
         Boolean result = car.isEmpty();
-
         // Assert – verify the result.
-        assertEquals(true,result);
+        assertEquals(true, result);
     }
 
     @Test
     public void TestisEmpty_returnsFalse(){
+        // Arrange
         car.position = 0;
         car.parking_situation[0] = false;
-
+        // Act
         Boolean result = car.isEmpty();
         // Assert – verify the result.
-        assertEquals(false,result);
+        assertEquals(false, result);
 
     }
 
     // WHEREIS TEST
     @Test
     public void TestwhereIs_Position0andNotParked(){ //tests start position for whereIs
-
+        // Arrange
         whereIsReturnStruct start_whereIs = new whereIsReturnStruct(0,false);
-        assertEquals(start_whereIs,car.whereIs());
+        whereIsReturnStruct actual;
+        // Act
+        actual = car.whereIs();
+        // Assert
+        assertEquals(start_whereIs, actual);
 
     }
 
@@ -64,43 +68,36 @@ public class VolvoTest {
     // MOVEFORWARD TESTS
     @Test
     public void TestMoveForward_SuccessfullyMovesForward() { //test adam move forward
-        assertEquals(car.MoveForward().position(),1);
+        //Arrange
+        int expectedPosition = 1;
+        //Act
+        car.MoveForward();
+        //Assert
+        assertEquals(expectedPosition, car.position);
     }
    
 
     @Test
-    public void TestMoveForward_MovesForward_IncrementOfPositionSuccessfull(){ 
-
-        Volvo car = new Volvo();
-        int position_integer = car.position;
-        position_integer = position_integer + 1;
-        assertEquals(position_integer, car.MoveForward().position());
-
-    }
-
-    @Test
     public void TestMoveForward_EndOfStreet_CanNotMoveForward(){
-
         //Arrange
-       // Volvo car = new Volvo();
         car.position = 500;
-
+        int expectedPosition = 500;
         //Act
         MoveReturnStruct move = car.MoveForward();
-        
-
-        assertEquals(500, move.position()); // car is still standing at 500
+        //Assert
+        assertEquals(expectedPosition, move.position()); // car is still standing at 500
 
     }
 
     @Test
     public void TestMoveForward_CarIsParked_DontMoveForward(){
-       
+        //Arrange
         car.isParked = true;
-        car.position = 0;
-        MoveReturnStruct move = car.MoveForward();
-
-        assertEquals(0,car.position);
+        int expectedCarPosition = 0;
+        //Act
+        int resultPosition = car.MoveForward().position();
+        //Assert
+        assertEquals(expectedCarPosition, resultPosition);
 
     }
 
@@ -108,15 +105,14 @@ public class VolvoTest {
 
     @Test
     public void TestMoveBackward_BeginningOfStreet_CanNotMoveBackward(){
-
         //Arrange
-        //Volvo car = new Volvo();
         car.position = 0;
-        // boolean result = car.parking_situation[car.position];
-
+        int expectedPosition = 0;
+        int resultPosition;
         //Act
-        MoveReturnStruct move = car.MoveBackward();
-        assertEquals(0, car.position);
+        resultPosition = car.MoveBackward().position();
+        //Assert
+        assertEquals(expectedPosition,resultPosition);
 
     }
 
@@ -150,16 +146,12 @@ public class VolvoTest {
 
     @Test
     public void TestPark_ParkingSuccessfull(){
-
-        java.util.Arrays.fill(car.parking_situation, true ); 
-        //car.position = 10;
-        //Volvo car = new Volvo();
+        //Arrange
+        java.util.Arrays.fill(car.parking_situation, true);
         boolean parked;
         car.isParked = false;
-        boolean park =   car.Park();
         parked = car.isParked();
         assertEquals(parked, true);
-
     }
 
     @Test
