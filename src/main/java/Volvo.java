@@ -8,12 +8,14 @@ public class Volvo implements Car {
     public int sensors_result = 0;
     public boolean isParked = false;
     boolean[] parking_situation;
+    VolvoActuators actuator;
 
 
 
     public Volvo(){
         this.position = 0;  //initialize the position to zero
         this.parking_situation = new boolean[500]; //initialize parking spots
+        this.actuator = new VolvoActuators();
     }
 
 
@@ -23,8 +25,12 @@ public class Volvo implements Car {
         if(this.isParked) //if the car is parked, it can't move forward
             return new MoveReturnStruct(position, parking_situation); 
 
-        if(position != 500) // if the car is not at the end of the street -> move forward 
-            this.position++;
+        // if(position != 500) // if the car is not at the end of the street -> move forward 
+        //     this.position++;
+       
+        boolean ok_to_move = actuator.insideLimits(position,true);
+        if(ok_to_move)
+            position++;
         else // don't move forward, just return the same parking situation
             return new MoveReturnStruct(position, parking_situation); // the car is at the end of the street
 
@@ -41,7 +47,9 @@ public class Volvo implements Car {
 
     @Override
     public MoveReturnStruct MoveBackward() {
-        if(position == 0) //Fulfills the testcase in which we can't go back if we're at the beginning of the street
+        // if(position == 0) //Fulfills the testcase in which we can't go back if we're at the beginning of the street
+        boolean ok_to_move = actuator.insideLimits(position,true);
+        if(ok_to_move)
             return new MoveReturnStruct(0,parking_situation); //can't move backwards if beginning of street
         this.position = this.position - 1;
         return new MoveReturnStruct(position, parking_situation);
