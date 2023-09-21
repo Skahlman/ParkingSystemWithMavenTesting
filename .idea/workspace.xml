@@ -4,9 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aee07831-ca44-4f4e-adad-ddc26dbbb2d9" name="Changes" comment="Updated some testcases and commented vovlo.java">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Sensor.java" afterDir="false" />
+    <list default="true" id="aee07831-ca44-4f4e-adad-ddc26dbbb2d9" name="Changes" comment="Created Sensor Interface">
+      <change afterPath="$PROJECT_DIR$/src/main/java/SensorClass.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Sensor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Sensor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Volvo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Volvo.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,10 +18,10 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JUnit5 Test Class" />
-        <option value="Class" />
-        <option value="Record" />
         <option value="Interface" />
+        <option value="JUnit5 Test Class" />
+        <option value="Record" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -113,11 +115,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.VolvoTest.TestMoveForward_CarIsParked_DontMoveForward" />
-        <item itemvalue="JUnit.VolvoTest.TestMoveForward_EndOfStreet_CanNotMoveForward" />
         <item itemvalue="JUnit.VolvoTest.TestMoveForward_SuccessfullyMovesForward" />
-        <item itemvalue="JUnit.VolvoTest.TestAdamsMoveBackward" />
+        <item itemvalue="JUnit.VolvoTest.TestMoveForward_EndOfStreet_CanNotMoveForward" />
+        <item itemvalue="JUnit.VolvoTest.TestMoveForward_CarIsParked_DontMoveForward" />
         <item itemvalue="JUnit.VolvoTest.TestAdamsMoveForward" />
+        <item itemvalue="JUnit.VolvoTest.TestAdamsMoveBackward" />
       </list>
     </recent_temporary>
   </component>
