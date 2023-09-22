@@ -177,7 +177,7 @@ public class Volvo implements Car {
 
     }
 
-
+    
     public static double calculateVariance(double[] data) {
         // Step 1: Calculate the mean
         double sum = 0;
@@ -194,7 +194,7 @@ public class Volvo implements Car {
         }
 
         // Step 3: Calculate the variance
-        double variance = squaredDifferencesSum / data.length;
+        double variance = squaredDifferencesSum / (data.length-1);
 
         return variance;
     }
