@@ -77,7 +77,7 @@ public class Volvo implements Car {
     }
 
     //For phase 2
-
+/*
     public double[] sensorReadings(){
         double[] sensor_values = new double[2];
         double[] data1 = new double[5];
@@ -101,6 +101,8 @@ public class Volvo implements Car {
         return sensor_values;
 
     }
+
+ */
 
 
     public static double calculateVariance(int[] data) {
@@ -153,6 +155,7 @@ public class Volvo implements Car {
 
 
     //Phase two
+    /*
     @Override
     public Boolean isEmpty() {
 
@@ -173,11 +176,30 @@ public class Volvo implements Car {
         }
         return freeparking;
     }
+     */
+
+    int calculateAverage (int[] sensor1Readings, int[] sensor2Readings) {
+        int average = 0;
+        for (int i = 0; i < sensor1Readings.length; i++) {
+            average += sensor1Readings[i];
+            average += sensor2Readings[i];
+        }
+        return average / (sensor1Readings.length * 2);
+
+    }
+    int calculateAverage(int[] sensorReadings) {
+        int average = 0;
+        for (int sensorReading : sensorReadings) {
+            average += sensorReading;
+        }
+        return average / sensorReadings.length;
+    }
+
     public int isEmpty2() {
         SensorClass sensorClass = new SensorClass();
         int[] sensorValues1 = new int[5];
         int[] sensorValues2 = new int[5];
-        double average;
+        double average = 0;
 
 
         for (int i = 0; i < 5; i++) {
@@ -188,7 +210,7 @@ public class Volvo implements Car {
         double sensor2Variance = calculateVariance(sensorValues2);
 
         if ((sensor1working && sensor2working) && (sensor1Variance < 75 && sensor2Variance < 75)) {
-            average = (sensor1Variance + sensor2Variance) / 2;
+            average = calculateAverage(sensorValues1, sensorValues2);
         }
         if (!sensor1working && sensor1Variance < 75) {
             sensor1WorkingCounter++;
@@ -215,5 +237,6 @@ public class Volvo implements Car {
         if (!sensor1working && !sensor2working) {
             throw new IllegalStateException("No sensor working");
         }
+        return (int) average;
     }
 }
