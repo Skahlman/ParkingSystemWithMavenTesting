@@ -122,14 +122,14 @@ public class Volvo implements Car {
         }
         difference = position - position_of_lowest_value_to_parking_spot;
         if(difference>=0){
-            for(int i = position; i > difference; i--){
+            for(int i = position; i > (position - difference); i--){
                 status = MoveBackward();
             }
             isParked = true;
             System.out.println("Your car is parked at position: " + position);
         }
         else if(difference <0){
-            for(int i = position; i < Math.abs(difference); i++){
+            for(int i = position; i < position + Math.abs(difference); i++){
                 status = MoveForward();
             }
             isParked = true;
