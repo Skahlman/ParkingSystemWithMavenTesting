@@ -1,6 +1,7 @@
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
+import java.lang.Math;
 
 public class Volvo implements Car {
 
@@ -37,11 +38,12 @@ public class Volvo implements Car {
         parking_situation[position] = isEmpty(); // sets the position to empty or not empty
         return new MoveReturnStruct(position, parking_situation);
     }
-
+/* 
     @Override
     public Boolean isEmpty() {
         return parking_situation[position]; //Returns true if position is empty
     }
+*/
 
 
 
@@ -57,20 +59,85 @@ public class Volvo implements Car {
 
     @Override
     public boolean Park() {
+        int counter = 0;
+        boolean limits = false;
+        VolvoActuators actuator = new VolvoActuators();
+        Volvo car = new Volvo();
+        MoveReturnStruct status;
+        int [] parkingspots_positions = new int[5];
+        int [] minimum_to_closest_parking_spot = new int[5];
+        int j  = 0;
+        int position_of_lowest_value_to_parking_spot;
+        int lowest_value_of_parking_spot;
+        int difference;
+        //boolean forwad_backward = true;
+        
+        if(isParked) //if it is already parked, then return
+            return true; //did not park because it is already parked
+    
+        while(true){
+            for(boolean parking_spot : parking_situation){
+                if(parking_spot == true){
+                    counter++;
+                }
+            }
+            if(counter>=5){
+                counter = 0;
+                break;
+            }
+            counter = 0;
+            
+            parking_situation[position] = isEmpty();
+            status = MoveForward();            
 
-    if(isParked) //if it is already parked, then return
-        return false; //did not park because it is already parked
-
-    while(this.position < 499) { //
-        boolean canPark = checkIfFreeParkingSpot(); //check if the latest 5 metres are free, fulfills the testcase "can park"
-      
-        if(canPark) { //Fulfills the testcase where the car is able to park
-            isParked = true;
-            return true; //succeded to park
+            /*
+            while(this.position < 499) { //
+                boolean canPark = checkIfFreeParkingSpot(); //check if the latest 5 metres are free, fulfills the testcase "can park"
+            
+                if(canPark) { //Fulfills the testcase where the car is able to park
+                    isParked = true;
+                    return true; //succeded to park
+                }
+                MoveForward();
+            }*/
         }
-        MoveForward();
-    }
-    return false;
+        for(int i = 0; i<500; i++){
+            if(parking_situation[i]==true){
+                parkingspots_positions[j] = i;
+                j++;
+            }
+        }
+        for(int i = 0; i < 5; i++){
+            minimum_to_closest_parking_spot[i] = Math.abs(position - parkingspots_positions[i]);
+        }
+        lowest_value_of_parking_spot = minimum_to_closest_parking_spot[0];
+        position_of_lowest_value_to_parking_spot = 0;
+        for(int i = 1; i < 5; i++){
+            
+            if(minimum_to_closest_parking_spot[i]<lowest_value_of_parking_spot){
+                lowest_value_of_parking_spot = minimum_to_closest_parking_spot[i];
+                position_of_lowest_value_to_parking_spot = i;
+
+            }
+        }
+        difference = position - position_of_lowest_value_to_parking_spot;
+        if(difference>=0){
+            for(int i = position; i > difference; i--){
+                status = MoveBackward();
+            }
+            isParked = true;
+            System.out.println("Your car is parked at position: " + position);
+        }
+        else if(difference <0){
+            for(int i = position; i < Math.abs(difference); i++){
+                status = MoveForward();
+            }
+            isParked = true;
+            System.out.println("Your car is parked at position: " + position);
+        }
+
+
+        return isParked;
     }
 
     @Override
@@ -85,8 +152,7 @@ public class Volvo implements Car {
         return random.nextInt(200); //Generates a random number
     }
 
-    //For phase 2
-    /*
+    
     public double[] sensorReadings(){
         double[] sensor_values = new double[2];
         double[] data1 = new double[5];
@@ -137,7 +203,7 @@ public class Volvo implements Car {
         sensors_result = value;
     }
 
-     */
+    
 
     @Override
     public whereIsReturnStruct whereIs() {
@@ -163,10 +229,9 @@ public class Volvo implements Car {
 
         return true; // there is a free parking spot
     }
-}
 
-/* Phase two
-    @Override
+
+
     public Boolean isEmpty() {
 
         double [] sensorVariance;
@@ -186,5 +251,6 @@ public class Volvo implements Car {
         }
         return freeparking;
     }
+}
 
-     */
+     

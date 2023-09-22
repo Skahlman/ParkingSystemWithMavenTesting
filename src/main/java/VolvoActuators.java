@@ -1,5 +1,7 @@
 public class VolvoActuators implements Actuator{
 
+
+    public VolvoActuators(){}
     @Override
     public boolean insideLimits(int position, boolean forward){
 
