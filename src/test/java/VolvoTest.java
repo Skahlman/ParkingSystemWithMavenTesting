@@ -15,12 +15,13 @@ public class VolvoTest {
     private Volvo volvoMock;
     Volvo car;
     SensorClass sensorMock;
+    Logic logic = new Logic();
 
     @BeforeEach
     public void init() {
         volvoMock = Mockito.mock(Volvo.class);
         sensorMock = Mockito.mock(SensorClass.class);
-        car = new Volvo(sensorMock);
+        car = new Volvo(sensorMock, logic);
     }
 
     // ISEMPTY TEST

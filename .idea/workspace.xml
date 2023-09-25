@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aee07831-ca44-4f4e-adad-ddc26dbbb2d9" name="Changes" comment="Added two calculate average functions">
-      <change afterPath="$PROJECT_DIR$/src/main/java/NoSensorWorking.java" afterDir="false" />
+    <list default="true" id="aee07831-ca44-4f4e-adad-ddc26dbbb2d9" name="Changes" comment="Added all test cases and fixed existing functions">
+      <change afterPath="$PROJECT_DIR$/src/main/java/Logic.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/SensorClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/SensorClass.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Volvo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Volvo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/VolvoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/VolvoTest.java" afterDir="false" />
     </list>
@@ -64,7 +62,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.VolvoTest.BothSensorWorkingReturnAverageGreaterThan100">
+  <component name="RunManager">
     <configuration name="VolvoTest.BothSenorBreakdown" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ParkingProjectWithMaven" />
       <option name="PACKAGE_NAME" value="" />
@@ -80,16 +78,6 @@
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="VolvoTest" />
       <option name="METHOD_NAME" value="BothSensorWorkingReturnAverageGreaterThan100" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="VolvoTest.BothSensorsWorking" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ParkingProjectWithMaven" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="VolvoTest" />
-      <option name="METHOD_NAME" value="BothSensorsWorking" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -115,13 +103,23 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="VolvoTest.isEmptyReturnAverageLessThan100" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ParkingProjectWithMaven" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="VolvoTest" />
+      <option name="METHOD_NAME" value="isEmptyReturnAverageLessThan100" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.VolvoTest.isEmptyReturnAverageLessThan100" />
         <item itemvalue="JUnit.VolvoTest.BothSensorWorkingReturnAverageGreaterThan100" />
         <item itemvalue="JUnit.VolvoTest.Sensor2NoisyReturnAverageOfSensor1" />
         <item itemvalue="JUnit.VolvoTest.isEmptyReturnAverageGreaterThan100" />
         <item itemvalue="JUnit.VolvoTest.BothSenorBreakdown" />
-        <item itemvalue="JUnit.VolvoTest.BothSensorsWorking" />
       </list>
     </recent_temporary>
   </component>
@@ -136,7 +134,7 @@
       <workItem from="1694593750693" duration="5094000" />
       <workItem from="1694759598512" duration="13744000" />
       <workItem from="1695023255680" duration="3860000" />
-      <workItem from="1695624301243" duration="7764000" />
+      <workItem from="1695624301243" duration="9054000" />
     </task>
     <task id="LOCAL-00001" summary="New Project With Maven And Mockito">
       <created>1694597297728</created>
@@ -180,7 +178,14 @@
       <option name="project" value="LOCAL" />
       <updated>1694864402874</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Added all test cases and fixed existing functions">
+      <created>1695633195150</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1695633195150</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -216,7 +221,8 @@
     <MESSAGE value="Weird stuff with branches" />
     <MESSAGE value="Weird stuff with branches and redone some projects" />
     <MESSAGE value="Added some tests for the Adam Functions" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added some tests for the Adam Functions" />
+    <MESSAGE value="Added all test cases and fixed existing functions" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added all test cases and fixed existing functions" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>
