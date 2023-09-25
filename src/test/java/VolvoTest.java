@@ -84,6 +84,7 @@ public class VolvoTest {
         MoveReturnStruct move = car.MoveForward();
         //Assert
         assertEquals(expectedPosition, move.position()); // car is still standing at 500
+         assertEquals(expectedPosition, car.position); // car is still standing at 500
 
     }
 

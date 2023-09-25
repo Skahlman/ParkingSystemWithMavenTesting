@@ -51,7 +51,7 @@ public class Volvo implements Car {
     public MoveReturnStruct MoveBackward() {
         // if(position == 0) //Fulfills the testcase in which we can't go back if we're at the beginning of the street
         boolean ok_to_move = actuator.insideLimits(position,true);
-        if(ok_to_move)
+        if(!ok_to_move)
             return new MoveReturnStruct(0,parking_situation); //can't move backwards if beginning of street
         this.position = this.position - 1;
         return new MoveReturnStruct(position, parking_situation);
