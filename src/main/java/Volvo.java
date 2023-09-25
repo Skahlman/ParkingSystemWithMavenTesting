@@ -1,4 +1,6 @@
 import java.util.Random;
+//import org.apache.commons.math3.stat.descriptive.moment.StandardDeviation;
+
 
 public class Volvo implements Car {
 
@@ -9,11 +11,12 @@ public class Volvo implements Car {
     boolean sensor1working = true;
     boolean sensor2working = true;
     int sensor1WorkingCounter, sensor2WorkingCounter = 0;
+    public SensorClass sensorClass;
 
-
-    public Volvo() {
+    public Volvo(SensorClass sensor) {
         this.position = 0;
         this.parking_situation = new boolean[500];
+        this.sensorClass = sensor;
     }
 
 
@@ -105,7 +108,7 @@ public class Volvo implements Car {
  */
 
 
-    public static double calculateVariance(int[] data) {
+    public double calculateVariance(int[] data) {
         // Step 1: Calculate the mean
         double sum = 0;
         for (double num : data) {
@@ -178,6 +181,21 @@ public class Volvo implements Car {
     }
      */
 
+
+     double calculateStandardDeviation(int[] arr) {
+        int n = arr.length;
+        double mean = calculateAverage(arr);
+        double variance = 0.0;
+
+        for (int num : arr) {
+            variance += Math.pow(num - mean, 2);
+        }
+
+        variance /= n;
+
+        return Math.sqrt(variance);
+    }
+
     int calculateAverage (int[] sensor1Readings, int[] sensor2Readings) {
         int average = 0;
         for (int i = 0; i < sensor1Readings.length; i++) {
@@ -189,53 +207,56 @@ public class Volvo implements Car {
     }
     int calculateAverage(int[] sensorReadings) {
         int average = 0;
+        int counter = 0;
         for (int sensorReading : sensorReadings) {
             average += sensorReading;
+            counter++;
         }
-        return average / sensorReadings.length;
+        return average / counter;
     }
 
     public int isEmpty2() {
-        SensorClass sensorClass = new SensorClass();
         int[] sensorValues1 = new int[5];
         int[] sensorValues2 = new int[5];
         double average = 0;
 
 
         for (int i = 0; i < 5; i++) {
-            sensorValues1[i] = sensorClass.readSensor()[0];
-            sensorValues2[i] = sensorClass.readSensor()[1];
+            sensorValues1[i] = sensorClass.readSensor1();
+            sensorValues2[i] = sensorClass.readSensor2();
         }
-        double sensor1Variance = calculateVariance(sensorValues1);
-        double sensor2Variance = calculateVariance(sensorValues2);
+        double sensor1Deviation = calculateStandardDeviation(sensorValues1);
+        double sensor2Deviation = calculateStandardDeviation(sensorValues2);
 
-        if ((sensor1working && sensor2working) && (sensor1Variance < 75 && sensor2Variance < 75)) {
+        if ((sensor1working && sensor2working) && (sensor1Deviation < 75 && sensor2Deviation < 75)) { // Both sensors work
             average = calculateAverage(sensorValues1, sensorValues2);
         }
-        if (!sensor1working && sensor1Variance < 75) {
+        if (!sensor1working && sensor1Deviation < 75) {
             sensor1WorkingCounter++;
             if (sensor1WorkingCounter >= 5) // The sensor has worked 5 times in a row
                 sensor1working = true;
         }
-        if (!sensor2working && sensor2Variance < 75) {
+        if (!sensor2working && sensor2Deviation < 75) {
             sensor2WorkingCounter++;
             if (sensor2WorkingCounter >= 5) // The sensor has worked 5 times in a row
                 sensor2working = true;
         }
-        if (sensor1Variance > 75) { // Sensor 1 gives values upp åt väggarna
+        if (sensor1Deviation > 75) { // Sensor 1 gives values upp åt väggarna
+            sensor1working = false;
             sensor1WorkingCounter = 0;
         }
-        if (sensor2Variance > 75) { // Sensor 2 gives values upp åt väggarna
+        if (sensor2Deviation > 75) { // Sensor 2 gives values upp åt väggarna
+            sensor2working = false;
             sensor2WorkingCounter = 0;
         }
-        if (sensor1working && !sensor2working) {
+        if (sensor1working && !sensor2working) { // Only Sensor1 working
             average = calculateAverage(sensorValues1);
         }
-        if (!sensor1working && sensor2working) {
+        if (!sensor1working && sensor2working) { // Only Sensor2 working
             average = calculateAverage(sensorValues2);
         }
         if (!sensor1working && !sensor2working) {
-            throw new IllegalStateException("No sensor working");
+            throw new NoSensorWorking("No sensor working, You are on your own");
         }
         return (int) average;
     }

@@ -1,12 +1,10 @@
-import org.junit.Before;
+//import org.junit.Assert;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.Mock;
+//import org.junit.rules.ExpectedException;
 import org.mockito.Mockito;
-import org.mockito.MockitoAnnotations;
 
-import static org.junit.Assert.assertEquals;
+//import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 
@@ -16,11 +14,13 @@ public class VolvoTest {
 
     private Volvo volvoMock;
     Volvo car;
+    SensorClass sensorMock;
 
     @BeforeEach
     public void init() {
-        car = new Volvo();
-        volvoMock = Mockito.spy(Volvo.class);
+        volvoMock = Mockito.mock(Volvo.class);
+        sensorMock = Mockito.mock(SensorClass.class);
+        car = new Volvo(sensorMock);
     }
 
     // ISEMPTY TEST
@@ -179,22 +179,71 @@ public class VolvoTest {
     }
 
 
-    /* Phase 2
+    // Phase 2
     @Test
-    public void isEmptySensorReadingsReturn75() {
-        assertNotNull(volvoMock);
-        double [] sensorvalues = {75, 75};
-        when(volvoMock.sensorReadings()).thenReturn(sensorvalues);
-        assertFalse(volvoMock.isEmpty());
+    public void isEmptyReturnAverageLessThan100() {
+        assertNotNull(sensorMock);
+        int[] sensorValues = {50,50};
+        when(sensorMock.readSensor()).thenReturn(sensorValues);
+        assertTrue(car.isEmpty2() < 100);
     }
     @Test
-    public void isEmptySensorReadingsReturn74() {
-        init();
-        assertNotNull(volvoMock);
-        double [] sensorvalues = {74, 74};
-        when(volvoMock.sensorReadings()).thenReturn(sensorvalues);
-        assertTrue(volvoMock.isEmpty());
+    public void BothSensorWorkingReturnAverageGreaterThan100() {
+        assertNotNull(sensorMock);
+        // Arrange
+        int value1 = 110;
+        int value2 = 175;
+        // Act
+        when(sensorMock.readSensor1()).thenReturn(value1);
+        when(sensorMock.readSensor2()).thenReturn(value2);
+        // Assert
+        assertTrue(car.isEmpty2() > 100);
     }
-     */
-
+    @Test
+    public void Sensor1NoisyReturnAverageOfSensor2(){
+        assertNotNull(sensorMock);
+        // Arrange
+        int sensorValue1 = 100;
+        int sensorValue2 = 159;
+        int sensorValue3 = 201;
+        int sensorValue4 = 134;
+        int sensorValue5 = 500;
+        int sensorValue6 = 175;
+        // Act
+        when(sensorMock.readSensor1()).thenReturn(sensorValue1, sensorValue2, sensorValue3, sensorValue4, sensorValue5);
+        when(sensorMock.readSensor2()).thenReturn(sensorValue6);
+        // Assert
+        assertEquals(175, car.isEmpty2());
+    }
+    @Test
+    public void Sensor2NoisyReturnAverageOfSensor1(){
+        assertNotNull(sensorMock);
+        // Arrange
+        int sensorValue1 = 100;
+        int sensorValue2 = 159;
+        int sensorValue3 = 201;
+        int sensorValue4 = 134;
+        int sensorValue5 = 500;
+        int sensorValue6 = 175;
+        // Act
+        when(sensorMock.readSensor1()).thenReturn(sensorValue6);
+        when(sensorMock.readSensor2()).thenReturn(sensorValue1, sensorValue2, sensorValue3, sensorValue4, sensorValue5);
+        // Assert
+        assertEquals(175, car.isEmpty2());
+    }
+    @Test ()
+    public void BothSenorNoisy(){
+        assertNotNull(sensorMock);
+        // Arrange
+        int sensorValue1 = 100;
+        int sensorValue2 = 159;
+        int sensorValue3 = 201;
+        int sensorValue4 = 134;
+        int sensorValue5 = 500;
+        // Act
+        when(sensorMock.readSensor1()).thenReturn(sensorValue1, sensorValue2, sensorValue3, sensorValue4, sensorValue5);
+        when(sensorMock.readSensor2()).thenReturn(sensorValue1, sensorValue2, sensorValue3, sensorValue4, sensorValue5);
+        // Assert
+        assertThrows(NoSensorWorking.class, () -> car.isEmpty2());
+    }
 }
