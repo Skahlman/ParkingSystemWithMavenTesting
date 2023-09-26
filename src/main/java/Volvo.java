@@ -1,9 +1,3 @@
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Random;
-import java.lang.Math;
-
 //test push
 
 public class Volvo implements Car {
@@ -19,7 +13,7 @@ public class Volvo implements Car {
     int sensor1WorkingCounter, sensor2WorkingCounter = 0;
     public EndOfParkingPlaceStruct[] end_of_parking_place_info;  // stores the last position of a free parking place along with
                                                                         // the length of the parking spot
-    Logic logic;                
+    LogicClass logic;
     int end_of_parking_place_counter = 0; // index counter for end_of_parking_place_info array                            
     
     public Volvo(SensorClass sensor){
@@ -28,7 +22,7 @@ public class Volvo implements Car {
         this.actuator = new VolvoActuators();
         this.sensorClass = sensor;
         this.end_of_parking_place_info = new EndOfParkingPlaceStruct[500]; 
-        this.logic = new Logic();
+        this.logic = new LogicClass();
     }
 
 

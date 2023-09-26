@@ -1,11 +1,7 @@
-import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.MockitoAnnotations;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.*;
@@ -18,17 +14,15 @@ public class VolvoTest {
     private Volvo volvoMock;
     private SensorClass sensorMock;
     Volvo car;
-    Logic logic;
-    private SensorClass realSensor;
+    LogicClass logic;
 
     @BeforeEach
     public void init() {
         
-        logic = new Logic();
+        logic = new LogicClass();
         volvoMock = Mockito.mock(Volvo.class);
-        sensorMock = Mockito.spy(SensorClass.class);
-        realSensor = new SensorClass();
-        car = new Volvo(realSensor);
+        sensorMock = Mockito.mock(SensorClass.class);
+        car = new Volvo(sensorMock);
     }
 
     // ISEMPTY TEST
