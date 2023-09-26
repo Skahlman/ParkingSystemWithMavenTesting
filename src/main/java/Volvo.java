@@ -76,19 +76,19 @@ public class Volvo implements Car {
             return true; //did not park because it is already parked
     
         while(true){
-            for(boolean parking_spot : parking_situation){
+            for(boolean parking_spot : parking_situation){ //Checks if there has been 5 parking spots available
                 if(parking_spot == true){
                     counter++;
                 }
             }
-            if(counter>=5){
+            if(counter>=5){ //If there are 5 parking spots available, then break
                 counter = 0;
                 break;
             }
-            counter = 0;
+            counter = 0;    //Set counter to zero, so we can redo each check
             
-            parking_situation[position] = isEmpty();
-            status = MoveForward();            
+            parking_situation[position] = isEmpty();    //Reads sensor values and check if there is a free parking spot available
+            status = MoveForward();            // Move forward
 
             /*
             while(this.position < 499) { //
@@ -102,16 +102,16 @@ public class Volvo implements Car {
             }*/
         }
         for(int i = 0; i<500; i++){
-            if(parking_situation[i]==true){
+            if(parking_situation[i]==true){     //Count the parking spots and at what position the available parking spot is
                 parkingspots_positions[j] = i;
                 j++;
             }
         }
         for(int i = 0; i < 5; i++){
-            minimum_to_closest_parking_spot[i] = Math.abs(position - parkingspots_positions[i]);
+            minimum_to_closest_parking_spot[i] = Math.abs(position - parkingspots_positions[i]);    //Store all values of the distance to position from the parking spots
         }
-        lowest_value_of_parking_spot = minimum_to_closest_parking_spot[0];
-        position_of_lowest_value_to_parking_spot = 0;
+        lowest_value_of_parking_spot = minimum_to_closest_parking_spot[0];      //Takes the minimum value of the array and checks which one
+        position_of_lowest_value_to_parking_spot = 0;                           //is the closest one
         for(int i = 1; i < 5; i++){
             
             if(minimum_to_closest_parking_spot[i]<lowest_value_of_parking_spot){
@@ -120,16 +120,16 @@ public class Volvo implements Car {
 
             }
         }
-        difference = position - position_of_lowest_value_to_parking_spot;
-        if(difference>=0){
-            for(int i = position; i > (position - difference); i--){
+        difference = position - position_of_lowest_value_to_parking_spot;   //Check the difference and
+        if(difference>=0){                                                  //if the value is positive
+            for(int i = position; i > (position - difference); i--){        //move backward
                 status = MoveBackward();
             }
             isParked = true;
             System.out.println("Your car is parked at position: " + position);
         }
-        else if(difference <0){
-            for(int i = position; i < position + Math.abs(difference); i++){
+        else if(difference <0){                                             //If the difference is negative
+            for(int i = position; i < position + Math.abs(difference); i++){//move forward
                 status = MoveForward();
             }
             isParked = true;
@@ -137,7 +137,7 @@ public class Volvo implements Car {
         }
 
 
-        return isParked;
+        return isParked;                                                    //Returns that the parking is successfull
     }
 
     @Override
