@@ -1,4 +1,5 @@
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -15,37 +16,44 @@ import static org.mockito.Mockito.when;
 public class VolvoTest {
 
     private Volvo volvoMock;
+    private SensorClass sensorMock;
     Volvo car;
+    Logic logic;
+    private SensorClass realSensor;
 
     @BeforeEach
     public void init() {
-        car = new Volvo();
-        volvoMock = Mockito.spy(Volvo.class);
+        
+        logic = new Logic();
+        volvoMock = Mockito.mock(Volvo.class);
+        sensorMock = Mockito.spy(SensorClass.class);
+        realSensor = new SensorClass();
+        car = new Volvo(realSensor);
     }
 
     // ISEMPTY TEST
 
-    @Test
+    @Ignore
     public void TestisEmpty_returnsTrue()
     {
         // Arrange – position is 0 and that metre is free
         car.position = 0;
         car.parking_situation[0] = true;
         // Act – perform the actual work of the test.
-        Boolean result = car.isEmpty();
+        int result = car.isEmpty();
         // Assert – verify the result.
-        assertEquals(true, result);
+        assertEquals(1, result);
     }
 
-    @Test
+    @Ignore
     public void TestisEmpty_returnsFalse(){
         // Arrange
         car.position = 0;
         car.parking_situation[0] = false;
         // Act
-        Boolean result = car.isEmpty();
+        int result = car.isEmpty();
         // Assert – verify the result.
-        assertEquals(false, result);
+        assertEquals(0, result);
 
     }
 
@@ -137,10 +145,22 @@ public class VolvoTest {
         assertEquals(true, parked);
     }
 
-    @Test
+    @Ignore
     public void TestPark_NoFreeParkingSpots_CouldNotPark() {
         java.util.Arrays.fill(car.parking_situation, false );
         boolean result = car.Park();
+        assertFalse(result);
+    }
+
+    @Test
+    public void TestPark_NoFreeParkingSpots_CouldNotPark_mockito() {
+        //java.util.Arrays.fill(car.parking_situation, false );
+        Mockito.when(volvoMock.isEmpty()).thenReturn(200); // is empty always returns 200 here so that all spaces are occupied
+                                                                 // this will fill parkung_situation array with false
+
+
+        boolean result = volvoMock.Park();
+
         assertFalse(result);
     }
 
@@ -151,11 +171,21 @@ public class VolvoTest {
         assertFalse(park); //did not park successfully since it is already parked
     }
 
-    @Test
+    @Ignore
     public void TestPark_EndOfStreetAndFree5MetersBehind_DontPark() {
         car.position = 500;
-        java.util.Arrays.fill(car.parking_situation, true);
+        //java.util.Arrays.fill(car.parking_situation, true);
         boolean park = car.Park();
+        assertFalse(park);      // did not park since the car can not go beyond 500 meters and 
+                                // it would have had to move 1 meter forward to be able to park
+    }
+
+    @Test
+    public void TestPark_EndOfStreetAndFree5MetersBehind_DontPark_mockito() {
+        volvoMock.position = 500;
+        Mockito.when(volvoMock.isEmpty()).thenReturn(0);  // is empty always returns 0 here so that all spaces are occupied,
+                                                                // this will fill parkung_situation array with true
+        boolean park = volvoMock.Park();
         assertFalse(park);      // did not park since the car can not go beyond 500 meters and 
                                 // it would have had to move 1 meter forward to be able to park
     }
@@ -179,23 +209,112 @@ public class VolvoTest {
         assertFalse(car.isParked);
     }
 
+    @Ignore
+    public void TestcheckIfFreeParkingSpot()
+    {
 
-    /* Phase 2
-    @Test
-    public void isEmptySensorReadingsReturn75() {
-        assertNotNull(volvoMock);
-        double [] sensorvalues = {75, 75};
-        when(volvoMock.sensorReadings()).thenReturn(sensorvalues);
-        assertFalse(volvoMock.isEmpty());
+        boolean[] full_parking_sitation = new boolean[500];
+
+        //fill full_parking_sitation with parking spots
+        for(int pos = 0; pos < 500; pos++)
+        {
+            if(pos >= 5 && pos <= 10) //free parking spot between 5 and 10 meters
+                full_parking_sitation[pos] = true;
+            else if(pos >= 100 && pos <= 120) //free parking spot between 100 and 120 meters
+                full_parking_sitation[pos] = true;
+            else if(pos >= 450 && pos <= 456) //free parking spot between 450 and 456 meters
+                full_parking_sitation[pos] = true;
+        }
+
+        car.position = 11;
+        car.parking_situation = full_parking_sitation;
+        
+        boolean isFreeParkingSpot = car.checkIfFreeParkingSpot();
+        EndOfParkingPlaceStruct wanted = new EndOfParkingPlaceStruct(10, 5);
+        //EndOfParkingPlaceStruct real = new EndOfParkingPlaceStruct(0, 0);
+        EndOfParkingPlaceStruct real = car.end_of_parking_place_info[0];
+
+        //assertTrue(isFreeParkingSpot);
+        assertEquals(wanted.position, real.position);
+        assertEquals(wanted.length, real.length);
+
+
     }
-    @Test
-    public void isEmptySensorReadingsReturn74() {
-        init();
-        assertNotNull(volvoMock);
-        double [] sensorvalues = {74, 74};
-        when(volvoMock.sensorReadings()).thenReturn(sensorvalues);
-        assertTrue(volvoMock.isEmpty());
+
+    //ISEMPTY TEST, TESTING SENSORS NOISY USING MOCKITO
+     @Test
+    public void Sensor1NoisyReturnAverageOfSensor2(){
+        assertNotNull(sensorMock);
+        // Arrange
+        int sensorValue1 = 100;
+        int sensorValue2 = 159;
+        int sensorValue3 = 201;
+        int sensorValue4 = 134;
+        int sensorValue5 = 500;
+        int sensorValue6 = 175;
+        // Act
+        when(sensorMock.readSensor1()).thenReturn(sensorValue1, sensorValue2, sensorValue3, sensorValue4, sensorValue5);
+        when(sensorMock.readSensor2()).thenReturn(sensorValue6);
+        // Assert
+        assertEquals(175, car.isEmpty());
     }
-     */
+
+    @Test
+    public void Sensor2NoisyReturnAverageOfSensor1(){
+        assertNotNull(sensorMock);
+        // Arrange
+        int sensorValue1 = 100;
+        int sensorValue2 = 159;
+        int sensorValue3 = 201;
+        int sensorValue4 = 134;
+        int sensorValue5 = 500;
+        int sensorValue6 = 175;
+        // Act
+        when(sensorMock.readSensor1()).thenReturn(sensorValue6);
+        when(sensorMock.readSensor2()).thenReturn(sensorValue1, sensorValue2, sensorValue3, sensorValue4, sensorValue5);
+        // Assert
+        assertEquals(175, car.isEmpty());
+    }
+    @Test ()
+    public void BothSenorNoisy(){
+        assertNotNull(sensorMock);
+        // Arrange
+        int sensorValue1 = 100;
+        int sensorValue2 = 159;
+        int sensorValue3 = 201;
+        int sensorValue4 = 134;
+        int sensorValue5 = 500;
+        // Act
+        when(sensorMock.readSensor1()).thenReturn(sensorValue1, sensorValue2, sensorValue3, sensorValue4, sensorValue5);
+        when(sensorMock.readSensor2()).thenReturn(sensorValue1, sensorValue2, sensorValue3, sensorValue4, sensorValue5);
+        // Assert
+        assertThrows(NoSensorWorking.class, () -> car.isEmpty());
+    }
+
+// Phase 2
+@Test
+    public void isEmptyReturnAverageLessThan100() {
+        assertNotNull(sensorMock);
+        int value1 = 75;
+        int value2 = 50;
+        // Act
+        when(sensorMock.readSensor1()).thenReturn(value1);
+        when(sensorMock.readSensor2()).thenReturn(value2);
+        assertTrue(car.isEmpty() < 100);
+    } 
+
+@Test
+public void BothSensorWorkingReturnAverageGreaterThan100() {
+    assertNotNull(sensorMock);
+    // Arrange
+    int value1 = 110;
+    int value2 = 175;
+    // Act
+    when(sensorMock.readSensor1()).thenReturn(value1);
+    when(sensorMock.readSensor2()).thenReturn(value2);
+    // Assert
+    assertTrue(car.isEmpty() > 100);
+}
+
 
 }

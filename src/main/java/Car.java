@@ -12,7 +12,7 @@ public interface Car {
      Test-cases: If the car is at the end of the street
 
      */
-    //boolean[] MoveForward();
+  
 
     MoveReturnStruct MoveForward();
 
@@ -29,7 +29,7 @@ public interface Car {
      When the results are adjacent to the threshold.
 
      */
-    Boolean isEmpty();
+    int isEmpty();
 
     /**
 
