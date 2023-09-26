@@ -17,7 +17,8 @@ public class Volvo implements Car {
     boolean sensor1working = true;
     boolean sensor2working = true;
     int sensor1WorkingCounter, sensor2WorkingCounter = 0;
-    public EndOfParkingPlaceStruct[] end_of_parking_place_info;  // stores the last position of a free parking place along with
+    
+    public static EndOfParkingPlaceStruct[] end_of_parking_place_info;  // stores the last position of a free parking place along with
                                                                         // the length of the parking spot
     Logic logic;                
     int end_of_parking_place_counter = 0; // index counter for end_of_parking_place_info array                            
@@ -27,7 +28,12 @@ public class Volvo implements Car {
         this.parking_situation = new boolean[500]; //initialize parking spots
         this.actuator = new VolvoActuators();
         this.sensorClass = sensor;
-        this.end_of_parking_place_info = new EndOfParkingPlaceStruct[500]; 
+        
+        Volvo.end_of_parking_place_info = new EndOfParkingPlaceStruct[500]; 
+        for(int i = 0; i < end_of_parking_place_info.length; i++)
+        {
+            end_of_parking_place_info[i] = new EndOfParkingPlaceStruct(0, 0);
+        }
         this.logic = new Logic();
     }
 
@@ -85,33 +91,20 @@ public class Volvo implements Car {
         return false;
     }
 
-     public boolean scanStreetAndPark() {
+    //  public boolean scanStreetAndPark() {
 
-        if(isParked) //if it is already parked, then return
-            return false; //did not park because it is already parked
+    //     if(isParked) //if it is already parked, then return
+    //         return false; //did not park because it is already parked
     
-            for(int i = 0; i < 500; i++)
-            {
-                MoveForward();
-            }
+    //         for(int i = 0; i < 500; i++)
+    //         {
+    //             MoveForward();
+    //         }
 
 
 
-            //position should be 500 here
-
-            
-        
-        while(this.position < 499) { //
-            boolean canPark = checkIfFreeParkingSpot(); //check if the latest 5 metres are free, fulfills the testcase "can park"
-          
-            if(canPark) { //Fulfills the testcase where the car is able to park
-                isParked = true;
-                return true; //succeded to park
-            }
-            MoveForward();
-        }
-        return false;
-    }
+    //         //position should be 500 here
+    // }
     
 
     @Override
@@ -138,32 +131,52 @@ public class Volvo implements Car {
 
     public boolean checkIfFreeParkingSpot()
     {
-
-        int min_parking_length = 5;
-         int length = 0; // counts the number of meters avaliable in the parking spot
-
-        if(position < min_parking_length) // if the car is at position 0-5 of the street there can't be a parking spot avaliable
+        //boolean free = true;
+        if(position < 5)
             return false;
-        
-       
-        for(int i = position; i >= 0; i--)
+        for(int i = position; i > position-5; i--) //check previous 5 meters from the position
         {
-            if(!parking_situation[i] && length < min_parking_length) // if one of the first 5 meters is occupied, return false
+            if(!parking_situation[i]) // if one of the 5 meters is occupied, return false
                 return false;
-
-            /*  if the parking spot ends, store the position at the end of
-                the parking spot along with the length of the parking spot  */ 
-            if(!parking_situation[i] && length >= min_parking_length) 
-            {   
-                EndOfParkingPlaceStruct info = new EndOfParkingPlaceStruct(11, 5);
-                end_of_parking_place_info[0] = info;
-                end_of_parking_place_counter++;
-                return true;
-            }
-            length++; 
+                
         }
 
         return true; // there is a free parking spot
+    }
+
+    public ArrayList<EndOfParkingPlaceStruct> parkingSpots(boolean[] parking_situation)
+    {
+        ArrayList<EndOfParkingPlaceStruct> list = new ArrayList<EndOfParkingPlaceStruct>();
+        int length = 0;
+        int min_parking_length = 5;
+
+        for(int pos = 0; pos < parking_situation.length-1; pos++)
+        {
+            if(parking_situation[pos]) //if that position is free, add to the length +1
+            {
+                length++;
+            }   
+            else if(length > 0 && !parking_situation[pos]) // if there was an end to a parking spot
+            {
+                /*  if the length is long enough to be a parking spot, store end end-position
+                    of that parking spot along with the length of the parking spot in list*/
+                if(length >= min_parking_length) 
+                {
+                    list.add(new EndOfParkingPlaceStruct(pos-1, length)); 
+                }
+
+                length = 0; // reset the length
+            }
+            
+        }
+
+        return list;
+    }
+
+    public int calculateBestParkingSpot(ArrayList<EndOfParkingPlaceStruct> list)
+    {
+        int pos = 0;
+        return pos;
     }
 
     
