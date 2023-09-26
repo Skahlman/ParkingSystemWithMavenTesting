@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aee07831-ca44-4f4e-adad-ddc26dbbb2d9" name="Changes" comment="Added all test cases and fixed existing functions">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Logic.java" afterDir="false" />
+    <list default="true" id="aee07831-ca44-4f4e-adad-ddc26dbbb2d9" name="Changes" comment="Moved the logic to a new class and removed old code">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Sensor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Sensor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Volvo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Volvo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/VolvoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/VolvoTest.java" afterDir="false" />
     </list>
@@ -20,15 +20,15 @@
       <list>
         <option value="Interface" />
         <option value="JUnit5 Test Class" />
-        <option value="Record" />
         <option value="Class" />
+        <option value="Record" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="parkBranch" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -42,18 +42,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "last_opened_file_path": "C:/Users/adama/IdeaProjects/MockitoTest",
+    "nodejs_package_manager_path": "npm"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
@@ -115,10 +116,10 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.VolvoTest.isEmptyReturnAverageLessThan100" />
-        <item itemvalue="JUnit.VolvoTest.BothSensorWorkingReturnAverageGreaterThan100" />
         <item itemvalue="JUnit.VolvoTest.Sensor2NoisyReturnAverageOfSensor1" />
+        <item itemvalue="JUnit.VolvoTest.isEmptyReturnAverageLessThan100" />
         <item itemvalue="JUnit.VolvoTest.isEmptyReturnAverageGreaterThan100" />
+        <item itemvalue="JUnit.VolvoTest.BothSensorWorkingReturnAverageGreaterThan100" />
         <item itemvalue="JUnit.VolvoTest.BothSenorBreakdown" />
       </list>
     </recent_temporary>
@@ -134,7 +135,6 @@
       <workItem from="1694593750693" duration="5094000" />
       <workItem from="1694759598512" duration="13744000" />
       <workItem from="1695023255680" duration="3860000" />
-      <workItem from="1695624301243" duration="9054000" />
     </task>
     <task id="LOCAL-00001" summary="New Project With Maven And Mockito">
       <created>1694597297728</created>
@@ -178,14 +178,7 @@
       <option name="project" value="LOCAL" />
       <updated>1694864402874</updated>
     </task>
-    <task id="LOCAL-00007" summary="Added all test cases and fixed existing functions">
-      <created>1695633195150</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1695633195150</updated>
-    </task>
-    <option name="localTasksCounter" value="8" />
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -221,8 +214,7 @@
     <MESSAGE value="Weird stuff with branches" />
     <MESSAGE value="Weird stuff with branches and redone some projects" />
     <MESSAGE value="Added some tests for the Adam Functions" />
-    <MESSAGE value="Added all test cases and fixed existing functions" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added all test cases and fixed existing functions" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added some tests for the Adam Functions" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>

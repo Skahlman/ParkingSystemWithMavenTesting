@@ -12,13 +12,12 @@ public class Volvo implements Car {
     boolean sensor2working = true;
     int sensor1WorkingCounter, sensor2WorkingCounter = 0;
     public SensorClass sensorClass;
-    public Logic logic;
+    public Logic logic = new Logic();
 
-    public Volvo(SensorClass sensor, Logic logic) {
+    public Volvo(SensorClass sensor) {
         this.position = 0;
         this.parking_situation = new boolean[500];
         this.sensorClass = sensor;
-        this.logic = logic;
     }
 
 
