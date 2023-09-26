@@ -26,7 +26,7 @@ public class VolvoActuatorsTest{
         Mockito.when(actuator_mock.insideLimits(position, moveforward)).thenReturn(false);
 
         boolean result = actuator_mock.insideLimits(position, moveforward);
-
+        
         assertFalse(result);
 
     }

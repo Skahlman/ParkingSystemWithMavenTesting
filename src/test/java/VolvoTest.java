@@ -184,7 +184,7 @@ public class VolvoTest {
     @Test
     public void TestPark_EndOfStreetAndFree5MetersBehind_DontPark_mockito() {
         volvoMock.position = 500;
-        Mockito.when(volvoMock.isEmpty()).thenReturn(0);  // is empty always returns 0 here so that all spaces are occupied,
+        Mockito.when(volvoMock.isEmpty()).thenReturn(200);  // is empty always returns 0 here so that all spaces are occupied,
                                                                 // this will fill parkung_situation array with true
         boolean park = volvoMock.Park();
         assertFalse(park);      // did not park since the car can not go beyond 500 meters and 
@@ -210,56 +210,7 @@ public class VolvoTest {
         assertFalse(car.isParked);
     }
 
-   // PARKINGSPOTS TESTS
 
-    @Test 
-    public void TestparkingSpots_NoAvaliableParkingSpots()
-    {
-        boolean[] full_parking_sitation = new boolean[500];
-
-        car.parking_situation = full_parking_sitation;
-        int expected_length = 0;
-
-        ArrayList<EndOfParkingPlaceStruct> list = car.parkingSpots(car.parking_situation);
-        int actual_length = list.size();
-
-        assertEquals(expected_length,actual_length);
-        
-
-     
-    }
-
-    public void TestparkingSpots_ThreeAvaliableParkingSpots()
-    {
-           boolean[] full_parking_sitation = new boolean[500];
-
-        //fill full_parking_sitation with parking spots
-        for(int pos = 0; pos < 500; pos++)
-        {
-            if(pos >= 5 && pos <= 9) //free parking spot between 5 and 10 meters (a)
-                full_parking_sitation[pos] = true;
-            else if(pos >= 100 && pos <= 119) //free parking spot between 100 and 120 meters (b)
-                full_parking_sitation[pos] = true;
-            else if(pos >= 450 && pos <= 455) //free parking spot between 450 and 456 meters (c)
-                full_parking_sitation[pos] = true;
-        }
-
-        car.parking_situation = full_parking_sitation;
-
-        ArrayList<EndOfParkingPlaceStruct> list = car.parkingSpots(car.parking_situation);
-        EndOfParkingPlaceStruct wanted_a = new EndOfParkingPlaceStruct(9,5 ); // parking spot (a)
-        EndOfParkingPlaceStruct wanted_b = new EndOfParkingPlaceStruct(119, 20); // parking spot (b)
-        EndOfParkingPlaceStruct wanted_c = new EndOfParkingPlaceStruct(455, 6); // parking spot(c)
-        
-        assertEquals(wanted_a.position,list.get(0).position);
-        assertEquals(wanted_a.length,list.get(0).length);
-
-        assertEquals(wanted_b.position,list.get(1).position);
-        assertEquals(wanted_b.length,list.get(1).length);
-
-        assertEquals(wanted_c.position,list.get(2).position);
-        assertEquals(wanted_c.length,list.get(2).length);
-    }
 
     //ISEMPTY TEST, TESTING SENSORS NOISY USING MOCKITO
      @Ignore
