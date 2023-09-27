@@ -71,7 +71,6 @@ public class VolvoTest {
 
     }
 
-
     // MOVEFORWARD TESTS
     @Test
     public void TestMoveForward_SuccessfullyMovesForward() { //test adam move forward
@@ -133,7 +132,6 @@ public class VolvoTest {
 
 
     // PARK TESTS
-
     @Test
     public void TestPark_ParkingSuccessfull(){
         //Arrange
@@ -146,7 +144,7 @@ public class VolvoTest {
         assertEquals(true, parked);
     }
 
-    @Ignore
+    @Test
     public void TestPark_NoFreeParkingSpots_CouldNotPark() {
         java.util.Arrays.fill(car.parking_situation, false );
         boolean result = car.Park();
@@ -172,9 +170,9 @@ public class VolvoTest {
         assertFalse(park); //did not park successfully since it is already parked
     }
 
-    @Ignore
+    @Ignore 
     public void TestPark_EndOfStreetAndFree5MetersBehind_DontPark() {
-        car.position = 500;
+        car.position = 498;
         //java.util.Arrays.fill(car.parking_situation, true);
         boolean park = car.Park();
         assertFalse(park);      // did not park since the car can not go beyond 500 meters and 
@@ -213,7 +211,7 @@ public class VolvoTest {
 
 
     //ISEMPTY TEST, TESTING SENSORS NOISY USING MOCKITO
-     @Ignore
+     @Test
     public void Sensor1NoisyReturnAverageOfSensor2(){
         assertNotNull(sensorMock);
         // Arrange
@@ -230,7 +228,7 @@ public class VolvoTest {
         assertEquals(175, car.isEmpty());
     }
     
-        @Ignore
+        @Test
     public void Sensor2NoisyReturnAverageOfSensor1(){
         assertNotNull(sensorMock);
         // Arrange
@@ -247,7 +245,7 @@ public class VolvoTest {
         assertEquals(175, car.isEmpty());
     }
 
-    @Ignore ()
+    @Test
     public void BothSenorNoisy(){
         assertNotNull(sensorMock);
         // Arrange
@@ -275,7 +273,7 @@ public class VolvoTest {
         assertTrue(car.isEmpty() < 100);
     } 
 
-@Ignore
+@Test
 public void BothSensorWorkingReturnAverageGreaterThan100() {
     assertNotNull(sensorMock);
     // Arrange

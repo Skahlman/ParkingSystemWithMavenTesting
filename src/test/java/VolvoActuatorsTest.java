@@ -1,17 +1,15 @@
 import org.junit.Test;
-import org.mockito.Mockito;
-import org.mockito.Mockito;
 import org.junit.Before;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class VolvoActuatorsTest{
 
-    VolvoActuators actuator_mock;
+    VolvoActuators actuator;
 
     @Before
     public void init(){
 
-        actuator_mock = Mockito.mock(VolvoActuators.class);
+        actuator = new VolvoActuators();
 
     }
 
@@ -23,10 +21,8 @@ public class VolvoActuatorsTest{
         int position = 500;
         boolean moveforward = true;
 
-        Mockito.when(actuator_mock.insideLimits(position, moveforward)).thenReturn(false);
+        boolean result = actuator.insideLimits(position, moveforward);
 
-        boolean result = actuator_mock.insideLimits(position, moveforward);
-        
         assertFalse(result);
 
     }
@@ -39,9 +35,7 @@ public class VolvoActuatorsTest{
         int position = 0;
         boolean moveforward = false;
 
-        Mockito.when(actuator_mock.insideLimits(position, moveforward)).thenReturn(false);
-        
-        boolean result = actuator_mock.insideLimits(position, moveforward);
+        boolean result = actuator.insideLimits(position, moveforward);
 
         assertFalse(result);
 
@@ -54,10 +48,8 @@ public class VolvoActuatorsTest{
 
         int position = 5;
         boolean moveforward = true;
-        
-        Mockito.when(actuator_mock.insideLimits(position, moveforward)).thenReturn(true);
 
-        boolean result = actuator_mock.insideLimits(position, moveforward);
+        boolean result = actuator.insideLimits(position, moveforward);
 
         assertTrue(result);
 
@@ -71,9 +63,7 @@ public class VolvoActuatorsTest{
         int position = 5;
         boolean moveforward = false;
 
-        Mockito.when(actuator_mock.insideLimits(position, moveforward)).thenReturn(true);
-
-        boolean result = actuator_mock.insideLimits(position, moveforward);
+        boolean result = actuator.insideLimits(position, moveforward);
 
         assertTrue(result);
 
