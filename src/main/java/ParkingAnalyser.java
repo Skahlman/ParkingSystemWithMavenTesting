@@ -33,17 +33,35 @@ public class ParkingAnalyser {
 
     public int calculateBestParkingSpot(ArrayList<EndOfParkingPlaceStruct> list)
     {
+        if(list.isEmpty()) // if list is empty
+            return -1;
+        
         int min_parkingspot_length = list.get(0).length;
         int min_parkingspot_position = list.get(0).position;
 
         for(EndOfParkingPlaceStruct obj : list)
         {
-            if(obj.length <= min_parkingspot_length) // if the current parking spot is smaller or equal to the minimim parking spot so far
-            {
+            if(obj.length <= min_parkingspot_length && obj.position < 499)  //  if the current parking spot is smaller or equal to the minimim parking spot so far
+            {                                                               //  and if it is not at the end of the street
                 min_parkingspot_length =  obj.length;
                 min_parkingspot_position = obj.position;
             }
         }
         return min_parkingspot_position;
+    }
+
+    /* */
+    public boolean checkIfFreeParkingSpot(int position, boolean[] parking_situation)
+    {
+        if(position < 5)
+            return false;
+        for(int i = position; i > position-5; i--) //check previous 5 meters from the position
+        {
+            if(!parking_situation[i]) // if one of the 5 meters is occupied, return false
+                return false;
+                
+        }
+
+        return true; // there is a free parking spot
     }
 }

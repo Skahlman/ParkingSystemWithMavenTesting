@@ -5,12 +5,12 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.MockitoAnnotations;
+
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
-import java.util.ArrayList;
+
 
 //import org.Mockito.mockito;
 
@@ -21,6 +21,7 @@ public class VolvoTest {
     Volvo car;
     Logic logic;
     private SensorClass realSensor;
+    Volvo car2;
 
     @BeforeEach
     public void init() {
@@ -30,6 +31,8 @@ public class VolvoTest {
         sensorMock = Mockito.spy(SensorClass.class);
         realSensor = new SensorClass();
         car = new Volvo(sensorMock);
+        car2 = new Volvo(realSensor);
+
     }
 
     // ISEMPTY TEST
@@ -86,8 +89,8 @@ public class VolvoTest {
     @Test
     public void TestMoveForward_EndOfStreet_CanNotMoveForward(){
         //Arrange
-        car.position = 500;
-        int expectedPosition = 500;
+        car.position = 499;
+        int expectedPosition = 499;
         //Act
         MoveReturnStruct move = car.MoveForward();
         //Assert
@@ -133,11 +136,15 @@ public class VolvoTest {
 
     // PARK TESTS
     @Test
-    public void TestPark_ParkingSuccessfull(){
+    public void TestPark_ParkingSuccessfull_mockito(){
         //Arrange
-        java.util.Arrays.fill(car.parking_situation, true);
+       // java.util.Arrays.fill(car.parking_situation, true);
+        when(sensorMock.readSensor1()).thenReturn(200); 
+        when(sensorMock.readSensor2()).thenReturn(200); 
         boolean parked;
         car.isParked = false;
+        car.position = 0;
+        //car.position = 10;
         //Act
         parked = car.Park();
         //Assert
@@ -153,12 +160,15 @@ public class VolvoTest {
 
     @Test
     public void TestPark_NoFreeParkingSpots_CouldNotPark_mockito() {
-        //java.util.Arrays.fill(car.parking_situation, false );
-        Mockito.when(volvoMock.isEmpty()).thenReturn(200); // is empty always returns 200 here so that all spaces are occupied
-                                                                 // this will fill parkung_situation array with false
+       
+         // is empty always returns 0 here so that all spaces are occupied
+        // this will fill parkung_situation array with false
+
+        when(sensorMock.readSensor1()).thenReturn(0); 
+        when(sensorMock.readSensor2()).thenReturn(0); 
 
 
-        boolean result = volvoMock.Park();
+        boolean result = car.Park();
 
         assertFalse(result);
     }
@@ -170,9 +180,9 @@ public class VolvoTest {
         assertFalse(park); //did not park successfully since it is already parked
     }
 
-    @Ignore 
+    @Ignore // using mockito now (updated function below)
     public void TestPark_EndOfStreetAndFree5MetersBehind_DontPark() {
-        car.position = 498;
+        car.position = 499;
         //java.util.Arrays.fill(car.parking_situation, true);
         boolean park = car.Park();
         assertFalse(park);      // did not park since the car can not go beyond 500 meters and 
@@ -181,10 +191,18 @@ public class VolvoTest {
 
     @Test
     public void TestPark_EndOfStreetAndFree5MetersBehind_DontPark_mockito() {
-        volvoMock.position = 500;
-        Mockito.when(volvoMock.isEmpty()).thenReturn(200);  // is empty always returns 0 here so that all spaces are occupied,
-                                                                // this will fill parkung_situation array with true
-        boolean park = volvoMock.Park();
+        //volvoMock.position = 500;
+        car.position = 499;
+        for(int i = 495; i < 500; i++)
+            car.parking_situation[i] = true;
+                                                 
+    /* sensors always returns 0 here so that all spaces are free,
+    this will fill parkung_situation array with true so that the only reason for the car to not park is that
+    the car is at the end of the street and cant move one meter forward */  
+        // when(sensorMock.readSensor1()).thenReturn(0); 
+        // when(sensorMock.readSensor2()).thenReturn(0); 
+                                                                
+        boolean park = car.Park();
         assertFalse(park);      // did not park since the car can not go beyond 500 meters and 
                                 // it would have had to move 1 meter forward to be able to park
     }

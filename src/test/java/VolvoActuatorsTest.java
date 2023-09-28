@@ -18,7 +18,7 @@ public class VolvoActuatorsTest{
     @Test 
     public void TestinsideLimits_MoveForwardAndEndOfStreet_returnsFalse(){
         
-        int position = 500;
+        int position = 499;
         boolean moveforward = true;
 
         boolean result = actuator.insideLimits(position, moveforward);

@@ -21,7 +21,7 @@ public class VolvoActuators implements Actuator{
         if(position < 0) 
             return false;
 
-        if((position == 0 && !forward ) || (position == 500 && forward )) // Fullfills testcase [1] & [2]
+        if((position == 0 && !forward ) || (position == 499 && forward )) // Fullfills testcase [1] & [2]
         {
             return false;
         }
