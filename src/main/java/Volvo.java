@@ -12,7 +12,7 @@ public class Volvo implements Car {
     boolean sensor2working = true;
     int sensor1WorkingCounter, sensor2WorkingCounter = 0;
     
-    Logic logic;                
+    LogicClass logic;
     int end_of_parking_place_counter = 0; // index counter for end_of_parking_place_info array                            
     
     public Volvo(SensorClass sensor){
@@ -20,7 +20,7 @@ public class Volvo implements Car {
         this.parking_situation = new boolean[500]; //initialize parking spots
         this.actuator = new VolvoActuators();
         this.sensorClass = sensor;
-        this.logic = new Logic();
+        this.logic = new LogicClass();
     }
 
     @Override

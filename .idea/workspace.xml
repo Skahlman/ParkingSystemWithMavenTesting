@@ -4,7 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aee07831-ca44-4f4e-adad-ddc26dbbb2d9" name="Changes" comment="Added some tests for the Adam Functions" />
+    <list default="true" id="aee07831-ca44-4f4e-adad-ddc26dbbb2d9" name="Changes" comment="Added some tests for the Adam Functions">
+      <change afterPath="$PROJECT_DIR$/src/main/java/LogicClass.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/LogicTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Actuator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Actuator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Logic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Logic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Sensor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Sensor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/SensorClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/SensorClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Volvo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Volvo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/VolvoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/VolvoTest.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,45 +23,21 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="JUnit5 Test Class" />
-        <option value="Class" />
         <option value="Record" />
+        <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="parkBranch" />
+        <entry key="$PROJECT_DIR$" value="fixingOfActuators" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="GitToolBoxStore">
-    <option name="recentBranches">
-      <RecentBranches>
-        <option name="branchesForRepo">
-          <list>
-            <RecentBranchesForRepo>
-              <option name="branches">
-                <list>
-                  <RecentBranch>
-                    <option name="branchName" value="emeliePark" />
-                    <option name="lastUsedInstant" value="1695926063" />
-                  </RecentBranch>
-                  <RecentBranch>
-                    <option name="branchName" value="main" />
-                    <option name="lastUsedInstant" value="1695926062" />
-                  </RecentBranch>
-                </list>
-              </option>
-              <option name="repositoryRootUrl" value="file://$PROJECT_DIR$" />
-            </RecentBranchesForRepo>
-          </list>
-        </option>
-      </RecentBranches>
-    </option>
+    <option name="RESET_MODE" value="HARD" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -62,15 +48,10 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="aspect.path.notification.shown" value="true" />
-    <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="configurable.group.editor" />
-  </component>
   <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="" />
+    </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
     </key>
@@ -78,7 +59,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.VolvoTest">
+  <component name="RunManager" selected="JUnit.LogicTest">
     <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
@@ -101,22 +82,11 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="IntegrationTests.integrationTest2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="LogicTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="MockitoTest" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="IntegrationTests" />
-      <option name="METHOD_NAME" value="integrationTest2" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="IntegrationTests.integrationTest3" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="MockitoTest" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="IntegrationTests" />
-      <option name="METHOD_NAME" value="integrationTest3" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="MAIN_CLASS_NAME" value="LogicTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -130,30 +100,38 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="VolvoActuatorsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="MockitoTest" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="VolvoActuatorsTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="VolvoTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="MockitoTest" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="VolvoTest" />
-      <option name="METHOD_NAME" value="" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <list>
-      <item itemvalue="JUnit.VolvoTest" />
       <item itemvalue="JUnit.IntegrationTests" />
-      <item itemvalue="JUnit.IntegrationTests.integrationTest2" />
       <item itemvalue="JUnit.ParkingAnalyserTest" />
-      <item itemvalue="JUnit.IntegrationTests.integrationTest3" />
+      <item itemvalue="JUnit.VolvoActuatorsTest" />
+      <item itemvalue="JUnit.VolvoTest" />
+      <item itemvalue="JUnit.LogicTest" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.LogicTest" />
+        <item itemvalue="JUnit.ParkingAnalyserTest" />
+        <item itemvalue="JUnit.VolvoActuatorsTest" />
         <item itemvalue="JUnit.VolvoTest" />
         <item itemvalue="JUnit.IntegrationTests" />
-        <item itemvalue="JUnit.IntegrationTests.integrationTest3" />
-        <item itemvalue="JUnit.ParkingAnalyserTest" />
-        <item itemvalue="JUnit.IntegrationTests.integrationTest2" />
       </list>
     </recent_temporary>
   </component>
@@ -168,8 +146,7 @@
       <workItem from="1694593750693" duration="5094000" />
       <workItem from="1694759598512" duration="13744000" />
       <workItem from="1695023255680" duration="3860000" />
-      <workItem from="1695925968228" duration="5592000" />
-      <workItem from="1695975241027" duration="2035000" />
+      <workItem from="1695975746095" duration="1513000" />
     </task>
     <task id="LOCAL-00001" summary="New Project With Maven And Mockito">
       <created>1694597297728</created>
@@ -230,7 +207,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="origin/Emelie" />
+                        <option value="parkBranch" />
                       </list>
                     </value>
                   </entry>
@@ -263,6 +240,7 @@
     <SUITE FILE_PATH="coverage/ParkingSystemWithMavenTesting$ParkingAnalyserTest_TestcalculateBestParkingSpot_emptyList_returnMinusOne.ic" NAME="ParkingAnalyserTest.TestcalculateBestParkingSpot_emptyList_returnMinusOne Coverage Results" MODIFIED="1695966969088" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/ParkingSystemWithMavenTesting$ParkingAnalyserTest.ic" NAME="ParkingAnalyserTest Coverage Results" MODIFIED="1695975643079" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/ParkingSystemWithMavenTesting$IntegrationTests.ic" NAME="IntegrationTests Coverage Results" MODIFIED="1695975655821" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/ParkingSystemWithMavenTesting$LogicTest.ic" NAME="LogicTest Coverage Results" MODIFIED="1695987534782" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/ParkingSystemWithMavenTesting$VolvoActuatorsTest.ic" NAME="VolvoActuatorsTest Coverage Results" MODIFIED="1695968787937" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/ParkingSystemWithMavenTesting$VolvoTest.ic" NAME="VolvoTest Coverage Results" MODIFIED="1695975670216" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/ParkingSystemWithMavenTesting$IntegrationTests_integrationTest2.ic" NAME="IntegrationTests.integrationTest2 Coverage Results" MODIFIED="1695975628580" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />

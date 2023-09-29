@@ -1,9 +1,6 @@
-import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.Mock;
 import org.mockito.Mockito;
 
 
@@ -22,7 +19,7 @@ public class VolvoTest {
     private Volvo volvoMock;
     private SensorClass sensorMock;
     Volvo car;
-    Logic logic;
+    LogicClass logic;
     private SensorClass realSensor;
     private ParkingAnalyser analyserMock;
 
@@ -30,7 +27,7 @@ public class VolvoTest {
     @BeforeEach
     public void init() {
         
-        logic = new Logic();
+        logic = new LogicClass();
         volvoMock = Mockito.mock(Volvo.class);
         sensorMock = Mockito.spy(SensorClass.class);
         analyserMock = Mockito.spy(ParkingAnalyser.class);
