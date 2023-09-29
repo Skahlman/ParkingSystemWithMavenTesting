@@ -7,6 +7,8 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 
 
+import java.util.ArrayList;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
@@ -21,7 +23,8 @@ public class VolvoTest {
     Volvo car;
     Logic logic;
     private SensorClass realSensor;
-    Volvo car2;
+    private ParkingAnalyser analyserMock;
+
 
     @BeforeEach
     public void init() {
@@ -29,9 +32,10 @@ public class VolvoTest {
         logic = new Logic();
         volvoMock = Mockito.mock(Volvo.class);
         sensorMock = Mockito.spy(SensorClass.class);
+        analyserMock = Mockito.spy(ParkingAnalyser.class);
         realSensor = new SensorClass();
         car = new Volvo(sensorMock);
-        car2 = new Volvo(realSensor);
+
 
     }
 
@@ -205,6 +209,18 @@ public class VolvoTest {
         boolean park = car.Park();
         assertFalse(park);      // did not park since the car can not go beyond 500 meters and 
                                 // it would have had to move 1 meter forward to be able to park
+    }
+
+    @Test // rad 92 i
+    public void TestPark_EndOFStreet_NoPositionsAvaliable()
+    {
+        car.position = 499;
+        ArrayList<EndOfParkingPlaceStruct> list = new ArrayList<EndOfParkingPlaceStruct>();
+        when(analyserMock.calculateBestParkingSpot(list)).thenReturn(-1);
+        boolean result = car.Park();
+        assertFalse(result);
+
+
     }
 
 

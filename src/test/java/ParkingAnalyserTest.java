@@ -86,6 +86,18 @@ import java.util.ArrayList;
         assertEquals(expected, result);
     }
 
+    @Test
+    public void TestcalculateBestParkingSpot_emptyList_returnMinusOne()
+    {
+        ArrayList<EndOfParkingPlaceStruct> list = new ArrayList<EndOfParkingPlaceStruct>(); // no added items to the list
+        int result = analyser.calculateBestParkingSpot(list);
+        assertEquals(-1,result);
+
+
+    }
+
+
+
 
 
  }

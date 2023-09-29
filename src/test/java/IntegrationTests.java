@@ -128,6 +128,8 @@ public class IntegrationTests {
 
         int expected_position = 251; //the car is expected to park right after the sensor broke down
         assertEquals(expected_position, car.position);
+        assertTrue(car.isParked);
+
 
 
     }
