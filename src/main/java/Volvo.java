@@ -174,6 +174,16 @@ public class Volvo implements Car {
             sensorValues1[i] = sensorClass.readSensor1();
             sensorValues2[i] = sensorClass.readSensor2();
         }
+
+        for (int i = 0; i < sensorValues1.length; i++) {
+            if (sensorValues1[i] > 200) {
+                sensor1working = false;
+            }
+            if (sensorValues2[i] > 200) {
+                sensor2working = false;
+            }
+        }
+
         double sensor1Deviation = logic.calculateStandardDeviation(sensorValues1);
         double sensor2Deviation = logic.calculateStandardDeviation(sensorValues2);
 

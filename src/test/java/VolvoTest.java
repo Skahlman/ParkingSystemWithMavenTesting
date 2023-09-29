@@ -285,30 +285,38 @@ public class VolvoTest {
         assertThrows(NoSensorWorking.class, () -> car.isEmpty());
     }
 
-// Phase 2
-@Test
-    public void isEmptyReturnAverageLessThan100() {
+    // Phase 2
+    @Test
+        public void isEmptyReturnAverageLessThan100() {
+            assertNotNull(sensorMock);
+            int value1 = 75;
+            int value2 = 50;
+            // Act
+            when(sensorMock.readSensor1()).thenReturn(value1);
+            when(sensorMock.readSensor2()).thenReturn(value2);
+            assertTrue(car.isEmpty() < 100);
+        }
+
+    @Test
+    public void BothSensorWorkingReturnAverageGreaterThan100() {
         assertNotNull(sensorMock);
-        int value1 = 75;
-        int value2 = 50;
+        // Arrange
+        int value1 = 110;
+        int value2 = 175;
         // Act
         when(sensorMock.readSensor1()).thenReturn(value1);
         when(sensorMock.readSensor2()).thenReturn(value2);
-        assertTrue(car.isEmpty() < 100);
-    } 
+        // Assert
+        assertTrue(car.isEmpty() > 100);
+    }
 
-@Test
-public void BothSensorWorkingReturnAverageGreaterThan100() {
-    assertNotNull(sensorMock);
-    // Arrange
-    int value1 = 110;
-    int value2 = 175;
-    // Act
-    when(sensorMock.readSensor1()).thenReturn(value1);
-    when(sensorMock.readSensor2()).thenReturn(value2);
-    // Assert
-    assertTrue(car.isEmpty() > 100);
-}
+    @Test
+    public void Sensor1GeneratingOutOfBoundsValues() {
+        assertNotNull(sensorMock);
 
-
+        when(sensorMock.readSensor1()).thenReturn(400);
+        when(sensorMock.readSensor2()).thenReturn(150);
+        assertEquals(150,car.isEmpty());
+        assertFalse(car.sensor1working);
+    }
 }
