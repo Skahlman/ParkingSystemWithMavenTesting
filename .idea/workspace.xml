@@ -4,8 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aee07831-ca44-4f4e-adad-ddc26dbbb2d9" name="Changes" comment="Created test cases for the logic class">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="aee07831-ca44-4f4e-adad-ddc26dbbb2d9" name="Changes" comment="Added some tests for the Adam Functions">
+      <change beforePath="$PROJECT_DIR$/src/test/java/VolvoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/VolvoTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,6 +29,7 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="HARD" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -187,7 +188,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="origin/Emelie" />
+                        <option value="parkBranch" />
                       </list>
                     </value>
                   </entry>
@@ -198,7 +199,6 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="New Project With Maven And Mockito" />
@@ -217,11 +217,11 @@
     </pin-to-top-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/ParkingSystemWithMavenTesting$ParkingAnalyserTest_TestcalculateBestParkingSpot_emptyList_returnMinusOne.ic" NAME="ParkingAnalyserTest.TestcalculateBestParkingSpot_emptyList_returnMinusOne Coverage Results" MODIFIED="1695966969088" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/ParkingSystemWithMavenTesting$ParkingAnalyserTest.ic" NAME="ParkingAnalyserTest Coverage Results" MODIFIED="1695975643079" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/ParkingSystemWithMavenTesting$IntegrationTests.ic" NAME="IntegrationTests Coverage Results" MODIFIED="1695975655821" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/ParkingSystemWithMavenTesting$VolvoActuatorsTest.ic" NAME="VolvoActuatorsTest Coverage Results" MODIFIED="1695968787937" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/ParkingSystemWithMavenTesting$VolvoTest.ic" NAME="VolvoTest Coverage Results" MODIFIED="1695975670216" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/ParkingSystemWithMavenTesting$ParkingAnalyserTest.ic" NAME="ParkingAnalyserTest Coverage Results" MODIFIED="1695968184316" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/ParkingSystemWithMavenTesting$IntegrationTests.ic" NAME="IntegrationTests Coverage Results" MODIFIED="1695968461908" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/ParkingSystemWithMavenTesting$VolvoTest.ic" NAME="VolvoTest Coverage Results" MODIFIED="1695968236446" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/ParkingSystemWithMavenTesting$IntegrationTests_integrationTest2.ic" NAME="IntegrationTests.integrationTest2 Coverage Results" MODIFIED="1695975628580" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/ParkingSystemWithMavenTesting$ParkingAnalyserTest_TestcalculateBestParkingSpot_emptyList_returnMinusOne.ic" NAME="ParkingAnalyserTest.TestcalculateBestParkingSpot_emptyList_returnMinusOne Coverage Results" MODIFIED="1695966969088" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/ParkingSystemWithMavenTesting$VolvoActuatorsTest.ic" NAME="VolvoActuatorsTest Coverage Results" MODIFIED="1695968787937" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>
