@@ -73,8 +73,6 @@ public class IntegrationTests {
 
         assertEquals(499,car.position); //check if car is at the end of the street
 
-
-
     }
 
     @Test
@@ -82,7 +80,9 @@ public class IntegrationTests {
        
      * sensor 1 breaks down at position 250, there has not been any free parking spots up until now
      * there are one free parking spot right after 250, the car parks there.
-     * 
+     * then, it unparks and moves forward.
+        after 20 meters both sensors breaks down
+        the park function should not work after this
      * 
      */
     public void integrationTest2()
@@ -104,7 +104,7 @@ public class IntegrationTests {
         
             if(i == 250) //sensor 1 should break
             {
-                when(sensor_mock.readSensor2()).thenReturn(sensorValue1, sensorValue2, sensorValue3, sensorValue4, sensorValue5);
+                when(sensor_mock.readSensor1()).thenReturn(sensorValue1, sensorValue2, sensorValue3, sensorValue4, sensorValue5);
                 Mockito.when(sensor_mock.readSensor2()).thenReturn(150); 
                 assertEquals(150, car.isEmpty());
                 car.MoveForward(); //move forward
@@ -127,8 +127,90 @@ public class IntegrationTests {
         }
 
         int expected_position = 251; //the car is expected to park right after the sensor broke down
-        assertEquals(expected_position, car.position);
-        assertTrue(car.isParked);
+        assertEquals(expected_position, car.position); //check if car parked at the position right after sensor1 broke down
+        assertTrue(car.isParked); // doublecheck that it really is parked
+
+        car.UnPark(); //unparks the car
+
+        for(int i = 0; i < 20; i++)
+        {
+            car.MoveForward(); //move forward 20 steps
+        }
+
+        //both sensors should stop working here
+        when(sensor_mock.readSensor2()).thenReturn(sensorValue1, sensorValue2, sensorValue3, sensorValue4, sensorValue5);
+        when(sensor_mock.readSensor1()).thenReturn(sensorValue1, sensorValue2, sensorValue3, sensorValue4, sensorValue5);
+
+      //  car.Park(); //try to park the car
+
+        Throwable exception = assertThrows(
+                NoSensorWorking.class, () -> {
+                   car.Park();
+                }
+        );
+
+        assertEquals("No sensor working, You are on your own", exception.getMessage());
+
+    }
+
+    @Test
+    /*The sensor data should be mocked such that it represent a street with three parking
+    places of mutually different sizes, one should be not enough for safe parking and
+    the other two enough for parking. Moreover, one of the sensors should be broken
+    halfway in the middle of the scenario (i.e., when the car has reached the middle
+    of the street while moving forward) so that it constantly produces recognizably
+    out-of-bound values. */
+    public void integrationTest3()
+    {
+        car.position = 0; //Starts at the beginning of the street
+        int length = car.parking_situation.length;
+
+        /* scans the whole street for avaliable parking spots.
+         * the values from the sensors are mocked to indicate free spots at position 5-9 and position 260-266.
+         */
+        for(int i = 0; i < length; i++)
+        {
+            Mockito.when(actuator_mock.insideLimits(i,true)).thenReturn(true); // actuators should always say its okay to move forward here
+
+
+            if(i >= 5 && i <= 9 || i >= 260 && i <= 266 || i >= 300 && i <= 303 ) //free parking spot between 5 and 9 meters, 100 and 119 meters. too small parking spot between 300 and 303
+            {
+                if(i >= 250) //  sensor 1 should break down
+                {
+                    Mockito.when(sensor_mock.readSensor1()).thenReturn(500); // broken sensor
+                    Mockito.when(sensor_mock.readSensor2()).thenReturn(150); // good sensor
+                }
+                else
+                {
+                    Mockito.when(sensor_mock.readSensor1()).thenReturn(150); //
+                    Mockito.when(sensor_mock.readSensor2()).thenReturn(150);
+                }
+
+            }
+            else //both sensors saying it is occupied
+            {
+                if(i >= 250) //  sensor 1 should break down
+                {
+                    Mockito.when(sensor_mock.readSensor1()).thenReturn(500); // broken sensor
+                    Mockito.when(sensor_mock.readSensor2()).thenReturn(150); // good sensor
+                }
+                else
+                {
+                    Mockito.when(sensor_mock.readSensor1()).thenReturn(10);
+                    Mockito.when(sensor_mock.readSensor2()).thenReturn(10);
+                }
+
+            }
+
+
+            car.MoveForward(); //move forward until it reaches end of the street
+        }
+
+        car.Park(); // park the car
+
+        int expected_position = 5;
+        assertEquals(expected_position, car.position); //check if the car is at position 5, (the best parking spot)
+
 
 
 

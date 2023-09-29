@@ -184,17 +184,9 @@ public class VolvoTest {
         assertFalse(park); //did not park successfully since it is already parked
     }
 
-    @Ignore // using mockito now (updated function below)
-    public void TestPark_EndOfStreetAndFree5MetersBehind_DontPark() {
-        car.position = 499;
-        //java.util.Arrays.fill(car.parking_situation, true);
-        boolean park = car.Park();
-        assertFalse(park);      // did not park since the car can not go beyond 500 meters and 
-                                // it would have had to move 1 meter forward to be able to park
-    }
 
     @Test
-    public void TestPark_EndOfStreetAndFree5MetersBehind_DontPark_mockito() {
+    public void TestPark_EndOfStreetAndFree5MetersBehind_DontPark() {
         //volvoMock.position = 500;
         car.position = 499;
         for(int i = 495; i < 500; i++)
