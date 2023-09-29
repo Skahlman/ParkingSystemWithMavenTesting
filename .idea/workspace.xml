@@ -5,6 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="aee07831-ca44-4f4e-adad-ddc26dbbb2d9" name="Changes" comment="Added some tests for the Adam Functions">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Volvo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Volvo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/IntegrationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/IntegrationTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/VolvoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/VolvoTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -48,22 +51,21 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.VolvoTest.Sensor1GeneratingOutOfBoundsValues">
+  <component name="RunManager" selected="JUnit.IntegrationTests">
+    <configuration name="IntegrationTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ParkingProjectWithMaven" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="IntegrationTests" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="LogicTest.TestStandardDeviationIs0" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ParkingProjectWithMaven" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="LogicTest" />
       <option name="METHOD_NAME" value="TestStandardDeviationIs0" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="LogicTest.TestinsideLimits_MoveForwardOK_returnsTrue" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ParkingProjectWithMaven" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="LogicTest" />
-      <option name="METHOD_NAME" value="TestinsideLimits_MoveForwardOK_returnsTrue" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -100,19 +102,19 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="JUnit.IntegrationTests" />
       <item itemvalue="JUnit.LogicTest.TestStandardDeviationIs0" />
-      <item itemvalue="JUnit.LogicTest.TestinsideLimits_MoveForwardOK_returnsTrue" />
       <item itemvalue="JUnit.VolvoTest.Sensor1GeneratingOutOfBoundsValues" />
       <item itemvalue="JUnit.VolvoTest.TestMoveForward_CarIsParked_DontMoveForward" />
       <item itemvalue="JUnit.VolvoTest.isEmptyReturnAverageLessThan100" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.IntegrationTests" />
         <item itemvalue="JUnit.VolvoTest.Sensor1GeneratingOutOfBoundsValues" />
         <item itemvalue="JUnit.VolvoTest.isEmptyReturnAverageLessThan100" />
         <item itemvalue="JUnit.VolvoTest.TestMoveForward_CarIsParked_DontMoveForward" />
         <item itemvalue="JUnit.LogicTest.TestStandardDeviationIs0" />
-        <item itemvalue="JUnit.LogicTest.TestinsideLimits_MoveForwardOK_returnsTrue" />
       </list>
     </recent_temporary>
   </component>
@@ -207,7 +209,8 @@
     <MESSAGE value="Weird stuff with branches" />
     <MESSAGE value="Weird stuff with branches and redone some projects" />
     <MESSAGE value="Added some tests for the Adam Functions" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added some tests for the Adam Functions" />
+    <MESSAGE value="lalla" />
+    <option name="LAST_COMMIT_MESSAGE" value="lalla" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>
@@ -217,6 +220,7 @@
     </pin-to-top-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/MockitoTest$IntegrationTests.ic" NAME="IntegrationTests Coverage Results" MODIFIED="1695980574405" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/ParkingSystemWithMavenTesting$ParkingAnalyserTest.ic" NAME="ParkingAnalyserTest Coverage Results" MODIFIED="1695968184316" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/ParkingSystemWithMavenTesting$IntegrationTests.ic" NAME="IntegrationTests Coverage Results" MODIFIED="1695968461908" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/ParkingSystemWithMavenTesting$VolvoTest.ic" NAME="VolvoTest Coverage Results" MODIFIED="1695968236446" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />

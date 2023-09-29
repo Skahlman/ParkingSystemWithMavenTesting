@@ -202,17 +202,10 @@ public class IntegrationTests {
 
             }
 
-
             car.MoveForward(); //move forward until it reaches end of the street
         }
-
         car.Park(); // park the car
-
         int expected_position = 5;
         assertEquals(expected_position, car.position); //check if the car is at position 5, (the best parking spot)
-
-
-
-
     }
 }

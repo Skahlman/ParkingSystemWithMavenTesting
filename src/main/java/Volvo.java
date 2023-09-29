@@ -46,7 +46,7 @@ public class Volvo implements Car {
 
         int isEmptyAverage = isEmpty();
 
-        if(isEmptyAverage>100) //compares the average distance from the sensors to decide if the position is free or occupied
+        if(isEmptyAverage < 100) //compares the average distance from the sensors to decide if the position is free or occupied
             parking_situation[position] = false; //the position is occupied
         else
             parking_situation[position] = true; //the position is free
@@ -90,17 +90,12 @@ public class Volvo implements Car {
         if(isParked) //if it is already parked, then return
             return false; //did not park because it is already parked
     
-            for(int i = 0; i < 500; i++)
-            {
-                MoveForward();
-            }
-
-
-
+         for(int i = 0; i < 500; i++)
+         {
+             MoveForward();
+         }
             //position should be 500 here
 
-            
-        
         while(this.position < 499) { //
             boolean canPark = checkIfFreeParkingSpot(); //check if the latest 5 metres are free, fulfills the testcase "can park"
           

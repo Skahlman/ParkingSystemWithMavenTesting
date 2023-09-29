@@ -19,8 +19,6 @@ public class VolvoTest {
     private SensorClass sensorMock;
     Volvo car;
     Logic logic;
-    private SensorClass realSensor;
-    private ParkingAnalyser analyserMock;
 
 
     @BeforeEach
@@ -29,11 +27,7 @@ public class VolvoTest {
         logic = new LogicClass();
         volvoMock = Mockito.mock(Volvo.class);
         sensorMock = Mockito.spy(SensorClass.class);
-        analyserMock = Mockito.spy(ParkingAnalyser.class);
-        realSensor = new SensorClass();
         car = new Volvo(sensorMock);
-
-
     }
 
     // ISEMPTY TEST
@@ -242,8 +236,6 @@ public class VolvoTest {
         //assertTrue(isFreeParkingSpot);
         assertEquals(wanted.position, real.position);
         assertEquals(wanted.length, real.length);
-
-
     }
 
     //ISEMPTY TEST, TESTING SENSORS NOISY USING MOCKITO
@@ -320,6 +312,4 @@ public void BothSensorWorkingReturnAverageGreaterThan100() {
     // Assert
     assertTrue(car.isEmpty() > 100);
 }
-
-
 }
