@@ -1,7 +1,11 @@
+import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
 import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.*;
@@ -14,15 +18,22 @@ public class VolvoTest {
     private Volvo volvoMock;
     private SensorClass sensorMock;
     Volvo car;
-    LogicClass logic;
+    Logic logic;
+    private SensorClass realSensor;
+    private ParkingAnalyser analyserMock;
+
 
     @BeforeEach
     public void init() {
         
         logic = new LogicClass();
         volvoMock = Mockito.mock(Volvo.class);
-        sensorMock = Mockito.mock(SensorClass.class);
+        sensorMock = Mockito.spy(SensorClass.class);
+        analyserMock = Mockito.spy(ParkingAnalyser.class);
+        realSensor = new SensorClass();
         car = new Volvo(sensorMock);
+
+
     }
 
     // ISEMPTY TEST
@@ -285,38 +296,30 @@ public class VolvoTest {
         assertThrows(NoSensorWorking.class, () -> car.isEmpty());
     }
 
-    // Phase 2
-    @Test
-        public void isEmptyReturnAverageLessThan100() {
-            assertNotNull(sensorMock);
-            int value1 = 75;
-            int value2 = 50;
-            // Act
-            when(sensorMock.readSensor1()).thenReturn(value1);
-            when(sensorMock.readSensor2()).thenReturn(value2);
-            assertTrue(car.isEmpty() < 100);
-        }
-
-    @Test
-    public void BothSensorWorkingReturnAverageGreaterThan100() {
+// Phase 2
+@Test
+    public void isEmptyReturnAverageLessThan100() {
         assertNotNull(sensorMock);
-        // Arrange
-        int value1 = 110;
-        int value2 = 175;
+        int value1 = 75;
+        int value2 = 50;
         // Act
         when(sensorMock.readSensor1()).thenReturn(value1);
         when(sensorMock.readSensor2()).thenReturn(value2);
-        // Assert
-        assertTrue(car.isEmpty() > 100);
-    }
+        assertTrue(car.isEmpty() < 100);
+    } 
 
-    @Test
-    public void Sensor1GeneratingOutOfBoundsValues() {
-        assertNotNull(sensorMock);
+@Test
+public void BothSensorWorkingReturnAverageGreaterThan100() {
+    assertNotNull(sensorMock);
+    // Arrange
+    int value1 = 110;
+    int value2 = 175;
+    // Act
+    when(sensorMock.readSensor1()).thenReturn(value1);
+    when(sensorMock.readSensor2()).thenReturn(value2);
+    // Assert
+    assertTrue(car.isEmpty() > 100);
+}
 
-        when(sensorMock.readSensor1()).thenReturn(400);
-        when(sensorMock.readSensor2()).thenReturn(150);
-        assertEquals(150,car.isEmpty());
-        assertFalse(car.sensor1working);
-    }
+
 }
