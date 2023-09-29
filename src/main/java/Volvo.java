@@ -77,7 +77,6 @@ public class Volvo implements Car {
             }
             MoveForward();
         }
-
            /*  if the car is at the end of the street, call the ParkingAnalyser class and analyse the
             parking_situation array and look for the best parking spot */
         if(this.position >= 499)  
