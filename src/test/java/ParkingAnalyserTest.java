@@ -98,6 +98,15 @@ import java.util.ArrayList;
         assertEquals(-1,result);
     }
 
+    /* Testcase [5]: insert null array inside parkingSpots() will return an empty list */
+     @Test
+     public void TestparkingSpots_nullInput_returnEmptyList()
+     {
+         ArrayList<EndOfParkingPlaceStruct> result = analyser.parkingSpots(null);
+         assertTrue(result.isEmpty());
+     }
+
+
 
 
 

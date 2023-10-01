@@ -90,12 +90,10 @@ public class Volvo implements Car {
 
     }
 
-
     @Override
     public void UnPark() {
         isParked = false;   //The car is not parked anymore. Fulfills testcase [11] and [12]
     }
-
 
     @Override
     public whereIsReturnStruct whereIs() {

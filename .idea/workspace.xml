@@ -5,16 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="aee07831-ca44-4f4e-adad-ddc26dbbb2d9" name="Changes" comment="Added some tests for the Adam Functions">
+      <change afterPath="$PROJECT_DIR$/src/main/java/ParkingspotAnalyser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Actuator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Actuator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ParkingAnalyser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ParkingAnalyser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Volvo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Volvo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/VolvoActuators.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/VolvoActuators.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/IntegrationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/IntegrationTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/LogicTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/LogicTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/ParkingAnalyserTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ParkingAnalyserTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/VolvoActuatorsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/VolvoActuatorsTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/VolvoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/VolvoTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,8 +23,8 @@
       <list>
         <option value="JUnit5 Test Class" />
         <option value="Record" />
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -63,7 +60,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.VolvoTest.Sensor2BreakDownedGenerate5GoodValues">
+  <component name="RunManager" selected="JUnit.ParkingAnalyserTest.TestparkingSpots_nullInput_returnEmptyList">
     <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
@@ -77,32 +74,39 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ParkingAnalyserTest.TestcalculateBestParkingSpot_returnPosition9" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="IntegrationTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="MockitoTest" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="IntegrationTests" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ParkingAnalyserTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="MockitoTest" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="ParkingAnalyserTest" />
-      <option name="METHOD_NAME" value="TestcalculateBestParkingSpot_returnPosition9" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ParkingAnalyserTest.TestparkingSpots_nullInput_returnEmptyList" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="MockitoTest" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="ParkingAnalyserTest" />
+      <option name="METHOD_NAME" value="TestparkingSpots_nullInput_returnEmptyList" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ParkingAnalyserTest.TestparkingSpots_NoAvaliableParkingSpots" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="VolvoTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="MockitoTest" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="ParkingAnalyserTest" />
-      <option name="METHOD_NAME" value="TestparkingSpots_NoAvaliableParkingSpots" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ParkingAnalyserTest.TestparkingSpots_ThreeAvaliableParkingSpots_listReturnsCorrectValues" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="MockitoTest" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="ParkingAnalyserTest" />
-      <option name="METHOD_NAME" value="TestparkingSpots_ThreeAvaliableParkingSpots_listReturnsCorrectValues" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="MAIN_CLASS_NAME" value="VolvoTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -117,30 +121,20 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="VolvoTest.isEmptyReturnAverageLessThan100" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="MockitoTest" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="VolvoTest" />
-      <option name="METHOD_NAME" value="isEmptyReturnAverageLessThan100" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <list>
-      <item itemvalue="JUnit.VolvoTest.isEmptyReturnAverageLessThan100" />
-      <item itemvalue="JUnit.ParkingAnalyserTest.TestparkingSpots_NoAvaliableParkingSpots" />
-      <item itemvalue="JUnit.ParkingAnalyserTest.TestparkingSpots_ThreeAvaliableParkingSpots_listReturnsCorrectValues" />
-      <item itemvalue="JUnit.ParkingAnalyserTest.TestcalculateBestParkingSpot_returnPosition9" />
       <item itemvalue="JUnit.VolvoTest.Sensor2BreakDownedGenerate5GoodValues" />
+      <item itemvalue="JUnit.ParkingAnalyserTest" />
+      <item itemvalue="JUnit.VolvoTest" />
+      <item itemvalue="JUnit.IntegrationTests" />
+      <item itemvalue="JUnit.ParkingAnalyserTest.TestparkingSpots_nullInput_returnEmptyList" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.ParkingAnalyserTest.TestparkingSpots_nullInput_returnEmptyList" />
+        <item itemvalue="JUnit.IntegrationTests" />
+        <item itemvalue="JUnit.VolvoTest" />
+        <item itemvalue="JUnit.ParkingAnalyserTest" />
         <item itemvalue="JUnit.VolvoTest.Sensor2BreakDownedGenerate5GoodValues" />
-        <item itemvalue="JUnit.ParkingAnalyserTest.TestcalculateBestParkingSpot_returnPosition9" />
-        <item itemvalue="JUnit.ParkingAnalyserTest.TestparkingSpots_ThreeAvaliableParkingSpots_listReturnsCorrectValues" />
-        <item itemvalue="JUnit.ParkingAnalyserTest.TestparkingSpots_NoAvaliableParkingSpots" />
-        <item itemvalue="JUnit.VolvoTest.isEmptyReturnAverageLessThan100" />
       </list>
     </recent_temporary>
   </component>
@@ -248,19 +242,20 @@
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/ParkingSystemWithMavenTesting$VolvoTest_TestwhereIs_Position0andNotParked.ic" NAME="VolvoTest.TestwhereIs_Position0andNotParked Coverage Results" MODIFIED="1696070594044" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/ParkingSystemWithMavenTesting$VolvoTest_Sensor2BreakDownedGenerate5GoodValues.ic" NAME="VolvoTest.Sensor2BreakDownedGenerate5GoodValues Coverage Results" MODIFIED="1696149419331" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/ParkingSystemWithMavenTesting$IntegrationTests.ic" NAME="IntegrationTests Coverage Results" MODIFIED="1695992258685" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/ParkingSystemWithMavenTesting$IntegrationTests.ic" NAME="IntegrationTests Coverage Results" MODIFIED="1696158922171" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/ParkingSystemWithMavenTesting$LogicTest.ic" NAME="LogicTest Coverage Results" MODIFIED="1695992820829" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/ParkingSystemWithMavenTesting$VolvoTest_TestMoveForward_CarIsParked_DontMoveForward.ic" NAME="VolvoTest.TestMoveForward_CarIsParked_DontMoveForward Coverage Results" MODIFIED="1696071196288" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/ParkingSystemWithMavenTesting$VolvoTest_Sensor1NoisyReturnAverageOfSensor2.ic" NAME="VolvoTest.Sensor1NoisyReturnAverageOfSensor2 Coverage Results" MODIFIED="1696074259392" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/ParkingSystemWithMavenTesting$VolvoTest_Sensor2NoisyReturnAverageOfSensor1.ic" NAME="VolvoTest.Sensor2NoisyReturnAverageOfSensor1 Coverage Results" MODIFIED="1696074420987" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/ParkingSystemWithMavenTesting$VolvoTest_TestPark_EndOfStreetAndFree5MetersBehind_DontPark.ic" NAME="VolvoTest.TestPark_EndOfStreetAndFree5MetersBehind_DontPark Coverage Results" MODIFIED="1696073042632" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/ParkingSystemWithMavenTesting$IntegrationTests_integrationTest2.ic" NAME="IntegrationTests.integrationTest2 Coverage Results" MODIFIED="1695975628580" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/ParkingSystemWithMavenTesting$ParkingAnalyserTest.ic" NAME="ParkingAnalyserTest Coverage Results" MODIFIED="1695992280668" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/ParkingSystemWithMavenTesting$ParkingAnalyserTest.ic" NAME="ParkingAnalyserTest Coverage Results" MODIFIED="1696158784145" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/ParkingSystemWithMavenTesting$VolvoTest_TestUnPark_CarNotParked_DoNothing.ic" NAME="VolvoTest.TestUnPark_CarNotParked_DoNothing Coverage Results" MODIFIED="1696074185920" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/ParkingSystemWithMavenTesting$VolvoActuatorsTest.ic" NAME="VolvoActuatorsTest Coverage Results" MODIFIED="1696070039414" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/ParkingSystemWithMavenTesting$ParkingAnalyserTest_TestparkingSpots_nullInput_returnEmptyList.ic" NAME="ParkingAnalyserTest.TestparkingSpots_nullInput_returnEmptyList Coverage Results" MODIFIED="1696159200655" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/ParkingSystemWithMavenTesting$VolvoTest_TestPark_AlreadyParked_DontPark.ic" NAME="VolvoTest.TestPark_AlreadyParked_DontPark Coverage Results" MODIFIED="1696072129542" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/ParkingSystemWithMavenTesting$ParkingAnalyserTest_TestparkingSpots_NoAvaliableParkingSpots.ic" NAME="ParkingAnalyserTest.TestparkingSpots_NoAvaliableParkingSpots Coverage Results" MODIFIED="1696148325327" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/ParkingSystemWithMavenTesting$VolvoTest.ic" NAME="VolvoTest Coverage Results" MODIFIED="1695992680589" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/ParkingSystemWithMavenTesting$VolvoTest.ic" NAME="VolvoTest Coverage Results" MODIFIED="1696158908555" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/ParkingSystemWithMavenTesting$ParkingAnalyserTest_TestparkingSpots_ThreeAvaliableParkingSpots_listReturnsCorrectValues.ic" NAME="ParkingAnalyserTest.TestparkingSpots_ThreeAvaliableParkingSpots_listReturnsCorrectValues Coverage Results" MODIFIED="1696148555592" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/ParkingSystemWithMavenTesting$VolvoTest_isEmptyReturnAverageLessThan100.ic" NAME="VolvoTest.isEmptyReturnAverageLessThan100 Coverage Results" MODIFIED="1696074771604" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/ParkingSystemWithMavenTesting$VolvoTest_TestPark_ParkingSuccessfull_mockito.ic" NAME="VolvoTest.TestPark_ParkingSuccessfull_mockito Coverage Results" MODIFIED="1696071713978" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />

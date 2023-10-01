@@ -149,12 +149,12 @@ public class IntegrationTests {
     }
 
     @Test
-    /*The sensor data should be mocked such that it represent a street with three parking
-    places of mutually different sizes, one should be not enough for safe parking and
-    the other two enough for parking. Moreover, one of the sensors should be broken
+    /* The street has three parking places of mutually different sizes, one is not enough for safe parking and
+    the other two enough for parking. Moreover, one of the sensors break down
     halfway in the middle of the scenario (i.e., when the car has reached the middle
     of the street while moving forward) so that it constantly produces recognizably
-    out-of-bound values. */
+    out-of-bound values. The Parking System should still work since the other sensor is still functioning.
+    At the end, the car parks the car. */
     public void integrationTest3()
     {
         car.actuator.position = 0; //Starts at the beginning of the street

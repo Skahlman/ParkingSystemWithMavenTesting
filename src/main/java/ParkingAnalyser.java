@@ -1,12 +1,17 @@
 import java.util.ArrayList;
 
-public class ParkingAnalyser {
+public class ParkingAnalyser implements ParkingspotAnalyser {
      /* Testcases for ParkingAnalyser.java class are located in ParkingAnalyserTest.java and are
         numbered [1], [2],... [n].
      */
+    @Override
     public ArrayList<EndOfParkingPlaceStruct> parkingSpots(boolean[] parking_situation)
     {
         ArrayList<EndOfParkingPlaceStruct> list = new ArrayList<EndOfParkingPlaceStruct>();
+
+        if(parking_situation == null) //Fulfills testcase [5]
+            return list;
+
         int length = 0;
         int min_parking_length = 5;
 
@@ -33,6 +38,7 @@ public class ParkingAnalyser {
         return list; //Testcase [2] covers the whole function
     }
 
+    @Override
     public int calculateBestParkingSpot(ArrayList<EndOfParkingPlaceStruct> list)
     {
         if(list.isEmpty()) // Fulfills Testcase [4]: if list is empty
@@ -57,7 +63,7 @@ public class ParkingAnalyser {
         return min_parkingspot_position;
     }
 
-    /* */
+    @Override
     public boolean checkIfFreeParkingSpot(int position, boolean[] parking_situation)
     {
         if(position < 5)
@@ -66,7 +72,6 @@ public class ParkingAnalyser {
         {
             if(!parking_situation[i]) // if one of the 5 meters is occupied, return false
                 return false;
-                
         }
 
         return true; // there is a free parking spot
