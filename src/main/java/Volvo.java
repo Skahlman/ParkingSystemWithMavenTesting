@@ -2,12 +2,15 @@ import java.util.ArrayList;
 
 public class Volvo implements Car {
 
+    /* Testcases for Volvo.java class are located in VolvoTest.java and are
+        numbered [1], [2],... [n].
+     */
+
     public boolean isParked = false;
     boolean[] parking_situation;
     public VolvoActuators actuator;
     SensorClass sensorClass;
     boolean sensor1working = true, sensor2working= true;
-    //boolean sensor2working = true;
     int sensor1WorkingCounter, sensor2WorkingCounter = 0;
     LogicClass logic;
 
@@ -21,22 +24,22 @@ public class Volvo implements Car {
     @Override
     public MoveReturnStruct MoveForward() { 
 
-        if(this.isParked) //if the car is parked, it can't move forward
+        if(this.isParked) // Fulfills testcase [4]: if the car is parked, it can't move forward
             return new MoveReturnStruct(actuator.position, parking_situation);
        
         boolean ok_to_move = actuator.moveIfAllowed(true); //move forward if the cars' position is inside limits (<500)
 
-        if(!ok_to_move) // don't move forward, just return the same parking situation
+        if(!ok_to_move) // Fulfills Testcase [3]: don't move forward, just return the same parking situation
             return new MoveReturnStruct(actuator.position, parking_situation); // the car is at the end of the street
 
         int isEmptyAverage = isEmpty();
 
         if(isEmptyAverage<100) //compares the average distance from the sensors to decide if the position is free or occupied
-            parking_situation[actuator.position] = false; //the position is occupied
+            parking_situation[actuator.position] = false; //Testcase [16]: the position is occupied
         else
-            parking_situation[actuator.position] = true; //the position is free
+            parking_situation[actuator.position] = true; //Testcase [17]: the position is free
 
-        return new MoveReturnStruct(actuator.position, parking_situation);
+        return new MoveReturnStruct(actuator.position, parking_situation); //Fulfills testcase [2]
     }
 
 
@@ -44,16 +47,16 @@ public class Volvo implements Car {
     public MoveReturnStruct MoveBackward() {
 
         boolean ok_to_move = actuator.moveIfAllowed(false);
-        if(!ok_to_move)
+        if(!ok_to_move) //Fulfills testcase [5]
             return new MoveReturnStruct(0,parking_situation); //can't move backwards if beginning of street
 
-        return new MoveReturnStruct(actuator.position, parking_situation);
+        return new MoveReturnStruct(actuator.position, parking_situation); //Fulfills testcase [6], it is ok to move backwards
     }
 
     @Override
     public boolean Park() {
 
-        if(isParked) //if it is already parked, then return
+        if(isParked) // Fulfills testcase [9]: if it is already parked, then return
             return false; //did not park because it is already parked
 
         ParkingAnalyser analyser = new ParkingAnalyser();
@@ -61,7 +64,7 @@ public class Volvo implements Car {
         while(actuator.position < 499) { //
             boolean canPark = analyser.checkIfFreeParkingSpot(actuator.position, this.parking_situation); //check if the latest 5 metres are free, fulfills the testcase "can park"
           
-            if(canPark) { //Fulfills the testcase where the car is able to park
+            if(canPark) { //Fulfills testcase [7] where the car is able to park
                 isParked = true;
                 return true; //succeded to park
             }
@@ -74,7 +77,7 @@ public class Volvo implements Car {
                 along with the length of the parking spot in a list */
         ArrayList<EndOfParkingPlaceStruct> list = analyser.parkingSpots(parking_situation);
         if(list.isEmpty())
-            return false;
+            return false; // Fulfills Testcase [8]: no parking spots available. Also fulfills testcase [10]
         int park_position = analyser.calculateBestParkingSpot(list)-4; //park_position stores the position at the beginning of the best parking spot.
         if(park_position < 0 )
             return false;
@@ -90,7 +93,7 @@ public class Volvo implements Car {
 
     @Override
     public void UnPark() {
-        isParked = false;   //The car is not parked
+        isParked = false;   //The car is not parked anymore. Fulfills testcase [11] and [12]
     }
 
 
@@ -127,14 +130,14 @@ public class Volvo implements Car {
         }
         if (!sensor2working && sensor2Deviation < 75) {
             sensor2WorkingCounter++;
-            if (sensor2WorkingCounter >= 5) // The sensor has worked 5 times in a row
+            if (sensor2WorkingCounter >= 5) // Fulfills testcase [18]: The sensor has worked 5 times in a row
                 sensor2working = true;
         }
-        if (sensor1Deviation > 75) { // Sensor 1 gives values upp åt väggarna
+        if (sensor1Deviation > 75) { // Fulfills testcase [13]: Sensor 1 gives noisy values.
             sensor1working = false;
             sensor1WorkingCounter = 0;
         }
-        if (sensor2Deviation > 75) { // Sensor 2 gives values upp åt väggarna
+        if (sensor2Deviation > 75) { // Fulfills testcase [14]: Sensor 2 gives noisy values.
             sensor2working = false;
             sensor2WorkingCounter = 0;
         }
@@ -144,7 +147,7 @@ public class Volvo implements Car {
         if (!sensor1working && sensor2working) { // Only Sensor2 working
             average = logic.calculateAverage(sensorValues2);
         }
-        if (!sensor1working && !sensor2working) {
+        if (!sensor1working && !sensor2working) { //Fulfills testcase [15]
             throw new NoSensorWorking("No sensor working, You are on your own");
         }
         return (int) average;

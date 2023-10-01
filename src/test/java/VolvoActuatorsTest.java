@@ -8,17 +8,15 @@ public class VolvoActuatorsTest{
 
     @Before
     public void init(){
-
         actuator = new VolvoActuators();
-
     }
 
     /* Testcase [1]: car is at position 500 and wants to move forward, the actuators should return false,
      since it should not move forward in this case. */ 
     @Test 
-    public void TestinsideLimits_MoveForwardAndEndOfStreet_returnsFalse(){
+    public void TestmoveIfAllowed_MoveForwardAndEndOfStreet_returnsFalse(){
         
-        int position = 499;
+        actuator.position = 499;
         boolean moveforward = true;
 
         boolean result = actuator.moveIfAllowed(moveforward);
@@ -30,9 +28,9 @@ public class VolvoActuatorsTest{
     /* Testcase [2]: car is at position 0 and wants to move backward, the actuators should return false,
      since it should not move backward in this case. */ 
      @Test 
-    public void TestinsideLimits_MoveBackwardAndBeginningOfStreet_returnsFalse(){
+    public void TestmoveIfAllowed_MoveBackwardAndBeginningOfStreet_returnsFalse(){
 
-        int position = 0;
+        actuator.position = 0;
         boolean moveforward = false;
 
         boolean result = actuator.moveIfAllowed(moveforward);
@@ -44,13 +42,14 @@ public class VolvoActuatorsTest{
     /* Testcase [3]: car is at a position > 0 and < 500 and wants to move forward, the actuators should return true,
      since it should not be problem moving forward in this case. */ 
     @Test 
-    public void TestinsideLimits_MoveForwardOK_returnsTrue(){
+    public void TestmoveIfAllowed_MoveForwardOK_returnsTrue(){
 
-        int position = 5;
+        actuator.position = 5;
         boolean moveforward = true;
 
         boolean result = actuator.moveIfAllowed(moveforward);
 
+        assertEquals(6, actuator.position); //check if it moved forward one step
         assertTrue(result);
 
     }
@@ -58,15 +57,27 @@ public class VolvoActuatorsTest{
       /* Testcase [4]: car is at a position > 0 and < 500 and wants to move backward, the actuators should return true,
         since it should not be problem moving backward in this case. */ 
     @Test 
-    public void TestinsideLimits_MoveBackwardOK_returnsTrue(){
+    public void TestmoveIfAllowed_MoveBackwardOK_returnsTrue(){
 
-        int position = 5;
+        actuator.position = 5;
         boolean moveforward = false;
 
         boolean result = actuator.moveIfAllowed(moveforward);
-
+        assertEquals(4, actuator.position); // check if it moved back one step
         assertTrue(result);
 
+    }
+
+    /*Testcase [5]: car is at negative position, moveIfAllowed() should return false
+    * */
+    @Test
+    public void TestmoveIfAllowed_positionBelowZero_returnFalse()
+    {
+        actuator.position = -1;
+        boolean moveforward = true; // could be false also, does not matter
+        boolean result = actuator.moveIfAllowed(moveforward);
+
+        assertFalse(result);
     }
 
 

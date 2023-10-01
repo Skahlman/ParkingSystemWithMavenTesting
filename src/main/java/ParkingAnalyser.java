@@ -1,7 +1,9 @@
 import java.util.ArrayList;
 
 public class ParkingAnalyser {
-
+     /* Testcases for ParkingAnalyser.java class are located in ParkingAnalyserTest.java and are
+        numbered [1], [2],... [n].
+     */
     public ArrayList<EndOfParkingPlaceStruct> parkingSpots(boolean[] parking_situation)
     {
         ArrayList<EndOfParkingPlaceStruct> list = new ArrayList<EndOfParkingPlaceStruct>();
@@ -28,12 +30,12 @@ public class ParkingAnalyser {
             
         }
 
-        return list;
+        return list; //Testcase [2] covers the whole function
     }
 
     public int calculateBestParkingSpot(ArrayList<EndOfParkingPlaceStruct> list)
     {
-        if(list.isEmpty()) // if list is empty
+        if(list.isEmpty()) // Fulfills Testcase [4]: if list is empty
             return -1;
         
         int min_parkingspot_length = list.get(0).length;
@@ -41,8 +43,13 @@ public class ParkingAnalyser {
 
         for(EndOfParkingPlaceStruct obj : list)
         {
-            if(obj.length <= min_parkingspot_length && obj.position < 499)  //  if the current parking spot is smaller or equal to the minimim parking spot so far
-            {                                                               //  and if it is not at the end of the street
+            /*  if the current parking spot is smaller or equal to the minimim parking spot so far
+             and if the spot is not at the end of the street <-- Fulfills testcase[10] inside VolvoTest.java
+             This is also tested in testcase [3] inside ParkingAnalyserTest.
+             */
+
+            if(obj.length <= min_parkingspot_length && obj.position < 499)
+            {
                 min_parkingspot_length =  obj.length;
                 min_parkingspot_position = obj.position;
             }

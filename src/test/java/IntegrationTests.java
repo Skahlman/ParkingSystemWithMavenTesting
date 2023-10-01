@@ -5,7 +5,6 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 import static org.junit.Assert.assertEquals;
 
-
 public class IntegrationTests {
 
     Volvo car;
@@ -16,13 +15,11 @@ public class IntegrationTests {
 
     @Before
     public void init(){
-
         analyser_mock = Mockito.mock(ParkingAnalyser.class);
         actuator_mock = Mockito.mock(VolvoActuators.class);
         sensor_mock = Mockito.mock(SensorClass.class);
         car = new Volvo(sensor_mock);
         analyser = new ParkingAnalyser();
-
     }
 
     @Test
@@ -141,11 +138,9 @@ public class IntegrationTests {
         when(sensor_mock.readSensor2()).thenReturn(sensorValue1, sensorValue2, sensorValue3, sensorValue4, sensorValue5);
         when(sensor_mock.readSensor1()).thenReturn(sensorValue1, sensorValue2, sensorValue3, sensorValue4, sensorValue5);
 
-      //  car.Park(); //try to park the car
-
         Throwable exception = assertThrows(
                 NoSensorWorking.class, () -> {
-                   car.Park();
+                   car.Park(); //try to park the car
                 }
         );
 
@@ -172,7 +167,6 @@ public class IntegrationTests {
         {
             Mockito.when(actuator_mock.moveIfAllowed(true)).thenReturn(true); // actuators should always say its okay to move forward here
 
-
             if(i >= 5 && i <= 9 || i >= 260 && i <= 266 || i >= 300 && i <= 303 ) //free parking spot between 5 and 9 meters, 100 and 119 meters. too small parking spot between 300 and 303
             {
                 if(i >= 250) //  sensor 1 should break down
@@ -182,10 +176,9 @@ public class IntegrationTests {
                 }
                 else
                 {
-                    Mockito.when(sensor_mock.readSensor1()).thenReturn(150); //
+                    Mockito.when(sensor_mock.readSensor1()).thenReturn(150);
                     Mockito.when(sensor_mock.readSensor2()).thenReturn(150);
                 }
-
             }
             else //both sensors saying it is occupied
             {
@@ -199,20 +192,15 @@ public class IntegrationTests {
                     Mockito.when(sensor_mock.readSensor1()).thenReturn(10);
                     Mockito.when(sensor_mock.readSensor2()).thenReturn(10);
                 }
-
             }
-
-
             car.MoveForward(); //move forward until it reaches end of the street
         }
 
         car.Park(); // park the car
 
         int expected_position = 5;
+
         assertEquals(expected_position,  car.actuator.position); //check if the car is at position 5, (the best parking spot)
-
-
-
 
     }
 }

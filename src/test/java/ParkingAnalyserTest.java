@@ -1,4 +1,3 @@
- 
 import org.junit.Test;
 import org.mockito.Mockito;
 import org.mockito.Mockito;
@@ -13,19 +12,17 @@ import java.util.ArrayList;
 
     @Before
     public void init(){
-
        analyser = new ParkingAnalyser();
-
     }
 
     // PARKINGSPOTS TESTS
 
+     /*Testcase [1]: No found parking spots, parkingSpots() should return an empty array */
     @Test 
     public void TestparkingSpots_NoAvaliableParkingSpots()
     {
         boolean[] full_parking_sitation = new boolean[500];
 
-        
         int expected_length = 0;
 
         ArrayList<EndOfParkingPlaceStruct> list = analyser.parkingSpots(full_parking_sitation);
@@ -35,8 +32,10 @@ import java.util.ArrayList;
 
     }
 
+    /*Testcase [2]: There are three avalibale parking spots with different lengths, this
+    * test checks that the list returns the correct length and position */
     @Test
-    public void TestparkingSpots_ThreeAvaliableParkingSpots()
+    public void TestparkingSpots_ThreeAvaliableParkingSpots_listReturnsCorrectValues()
     {
            boolean[] full_parking_sitation = new boolean[500];
 
@@ -66,8 +65,12 @@ import java.util.ArrayList;
         assertEquals(wanted_c.length,list.get(2).length);
     }
 
-    // calculateBestParkingSpot TEST
+    // CALCULATEBESTPARKINGSPOT TEST
 
+     /* Testcase [3]: There are three free parking spots avaliable, and
+     * calculateBestParingSpot() should return the parking spot at position 9.
+     * The parking spot as position 455 has the same length, but it should
+     * not return that one since it is at the very end of the street. */
     @Test
     public void TestcalculateBestParkingSpot_returnPosition9()
     {
@@ -86,14 +89,13 @@ import java.util.ArrayList;
         assertEquals(expected, result);
     }
 
+    /*Testcase [4]: calculateBestParkingSpot() receives an empty list, and returns -1. */
     @Test
     public void TestcalculateBestParkingSpot_emptyList_returnMinusOne()
     {
         ArrayList<EndOfParkingPlaceStruct> list = new ArrayList<EndOfParkingPlaceStruct>(); // no added items to the list
         int result = analyser.calculateBestParkingSpot(list);
         assertEquals(-1,result);
-
-
     }
 
 
