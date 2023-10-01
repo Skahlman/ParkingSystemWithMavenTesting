@@ -1,22 +1,17 @@
 import java.util.ArrayList;
 
-
 public class Volvo implements Car {
 
-    public int position;
     public boolean isParked = false;
     boolean[] parking_situation;
-    VolvoActuators actuator;
+    public VolvoActuators actuator;
     SensorClass sensorClass;
-    boolean sensor1working = true;
-    boolean sensor2working = true;
+    boolean sensor1working = true, sensor2working= true;
+    //boolean sensor2working = true;
     int sensor1WorkingCounter, sensor2WorkingCounter = 0;
-    
     LogicClass logic;
-    int end_of_parking_place_counter = 0; // index counter for end_of_parking_place_info array                            
-    
+
     public Volvo(SensorClass sensor){
-        this.position = 0;  //initialize the position to zero
         this.parking_situation = new boolean[500]; //initialize parking spots
         this.actuator = new VolvoActuators();
         this.sensorClass = sensor;
@@ -27,35 +22,32 @@ public class Volvo implements Car {
     public MoveReturnStruct MoveForward() { 
 
         if(this.isParked) //if the car is parked, it can't move forward
-            return new MoveReturnStruct(position, parking_situation); 
+            return new MoveReturnStruct(actuator.position, parking_situation);
        
-        boolean ok_to_move = actuator.insideLimits(position,true);
-        if(ok_to_move) //move forward if the cars' position is inside limits (<500) 
-            position++;
-        else // don't move forward, just return the same parking situation
-            return new MoveReturnStruct(position, parking_situation); // the car is at the end of the street
+        boolean ok_to_move = actuator.moveIfAllowed(true); //move forward if the cars' position is inside limits (<500)
+
+        if(!ok_to_move) // don't move forward, just return the same parking situation
+            return new MoveReturnStruct(actuator.position, parking_situation); // the car is at the end of the street
 
         int isEmptyAverage = isEmpty();
 
         if(isEmptyAverage<100) //compares the average distance from the sensors to decide if the position is free or occupied
-            parking_situation[position] = false; //the position is occupied
+            parking_situation[actuator.position] = false; //the position is occupied
         else
-            parking_situation[position] = true; //the position is free
+            parking_situation[actuator.position] = true; //the position is free
 
-        return new MoveReturnStruct(position, parking_situation);
+        return new MoveReturnStruct(actuator.position, parking_situation);
     }
-
-
 
 
     @Override
     public MoveReturnStruct MoveBackward() {
-        // if(position == 0) //Fulfills the testcase in which we can't go back if we're at the beginning of the street
-        boolean ok_to_move = actuator.insideLimits(position,false);
+
+        boolean ok_to_move = actuator.moveIfAllowed(false);
         if(!ok_to_move)
             return new MoveReturnStruct(0,parking_situation); //can't move backwards if beginning of street
-        this.position = this.position - 1;
-        return new MoveReturnStruct(position, parking_situation);
+
+        return new MoveReturnStruct(actuator.position, parking_situation);
     }
 
     @Override
@@ -64,12 +56,10 @@ public class Volvo implements Car {
         if(isParked) //if it is already parked, then return
             return false; //did not park because it is already parked
 
-      
-
         ParkingAnalyser analyser = new ParkingAnalyser();
-        
-        while(this.position < 499) { //
-            boolean canPark = analyser.checkIfFreeParkingSpot(this.position, this.parking_situation); //check if the latest 5 metres are free, fulfills the testcase "can park"
+
+        while(actuator.position < 499) { //
+            boolean canPark = analyser.checkIfFreeParkingSpot(actuator.position, this.parking_situation); //check if the latest 5 metres are free, fulfills the testcase "can park"
           
             if(canPark) { //Fulfills the testcase where the car is able to park
                 isParked = true;
@@ -79,26 +69,22 @@ public class Volvo implements Car {
         }
            /*  if the car is at the end of the street, call the ParkingAnalyser class and analyse the
             parking_situation array and look for the best parking spot */
-        if(this.position >= 499)  
-        {
-           
+
             /*  goes through the parking_sitation array and stores the position at the end of each parkingspot
                 along with the length of the parking spot in a list */
-            ArrayList<EndOfParkingPlaceStruct> list = analyser.parkingSpots(parking_situation); 
-            if(list.isEmpty())
-                return false;
-            int park_position = analyser.calculateBestParkingSpot(list)-4; //park_position stores the position at the beginning of the best parking spot.
-            if(park_position < 0 )
-                return false;
-            for(int i = 0; i < this.parking_situation.length-park_position; i++)
-            {
-                MoveBackward(); //move back to the best parking position
-            }
-            isParked = true; //park the car
-            return true; 
+        ArrayList<EndOfParkingPlaceStruct> list = analyser.parkingSpots(parking_situation);
+        if(list.isEmpty())
+            return false;
+        int park_position = analyser.calculateBestParkingSpot(list)-4; //park_position stores the position at the beginning of the best parking spot.
+        if(park_position < 0 )
+            return false;
+        for(int i = 0; i < this.parking_situation.length-park_position; i++)
+        {
+            MoveBackward(); //move back to the best parking position
         }
+        isParked = true; //park the car
+        return true;
 
-        return false;
     }
 
 
@@ -110,7 +96,7 @@ public class Volvo implements Car {
 
     @Override
     public whereIsReturnStruct whereIs() {
-        return new whereIsReturnStruct(position,isParked);
+        return new whereIsReturnStruct(actuator.position,isParked);
     }
 
     public boolean isParked(){
@@ -118,13 +104,11 @@ public class Volvo implements Car {
         return isParked;
     }
 
-  
     @Override
     public int isEmpty() {
         int[] sensorValues1 = new int[5];
         int[] sensorValues2 = new int[5];
         double average = 0;
-
 
         for (int i = 0; i < 5; i++) {
             sensorValues1[i] = sensorClass.readSensor1();

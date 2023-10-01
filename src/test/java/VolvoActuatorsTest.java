@@ -21,7 +21,7 @@ public class VolvoActuatorsTest{
         int position = 499;
         boolean moveforward = true;
 
-        boolean result = actuator.insideLimits(position, moveforward);
+        boolean result = actuator.moveIfAllowed(moveforward);
 
         assertFalse(result);
 
@@ -35,7 +35,7 @@ public class VolvoActuatorsTest{
         int position = 0;
         boolean moveforward = false;
 
-        boolean result = actuator.insideLimits(position, moveforward);
+        boolean result = actuator.moveIfAllowed(moveforward);
 
         assertFalse(result);
 
@@ -49,7 +49,7 @@ public class VolvoActuatorsTest{
         int position = 5;
         boolean moveforward = true;
 
-        boolean result = actuator.insideLimits(position, moveforward);
+        boolean result = actuator.moveIfAllowed(moveforward);
 
         assertTrue(result);
 
@@ -63,7 +63,7 @@ public class VolvoActuatorsTest{
         int position = 5;
         boolean moveforward = false;
 
-        boolean result = actuator.insideLimits(position, moveforward);
+        boolean result = actuator.moveIfAllowed(moveforward);
 
         assertTrue(result);
 

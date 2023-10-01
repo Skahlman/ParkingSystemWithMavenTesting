@@ -5,14 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="aee07831-ca44-4f4e-adad-ddc26dbbb2d9" name="Changes" comment="Added some tests for the Adam Functions">
-      <change afterPath="$PROJECT_DIR$/src/main/java/LogicClass.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/LogicTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2023-09-29,_13_11_[Changes]/shelved.patch" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2023-09-29__13_11__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Actuator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Actuator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Logic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Logic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/LogicClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/LogicClass.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Sensor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Sensor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/SensorClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/SensorClass.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Volvo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Volvo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/VolvoActuators.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/VolvoActuators.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/IntegrationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/IntegrationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/LogicTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/LogicTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/VolvoActuatorsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/VolvoActuatorsTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/VolvoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/VolvoTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -47,6 +52,9 @@
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ToolWindowCoverage.ShowToolbar" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
@@ -120,17 +128,17 @@
     </configuration>
     <list>
       <item itemvalue="JUnit.IntegrationTests" />
-      <item itemvalue="JUnit.ParkingAnalyserTest" />
-      <item itemvalue="JUnit.VolvoActuatorsTest" />
       <item itemvalue="JUnit.VolvoTest" />
       <item itemvalue="JUnit.LogicTest" />
+      <item itemvalue="JUnit.ParkingAnalyserTest" />
+      <item itemvalue="JUnit.VolvoActuatorsTest" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.LogicTest" />
-        <item itemvalue="JUnit.ParkingAnalyserTest" />
         <item itemvalue="JUnit.VolvoActuatorsTest" />
         <item itemvalue="JUnit.VolvoTest" />
+        <item itemvalue="JUnit.ParkingAnalyserTest" />
         <item itemvalue="JUnit.IntegrationTests" />
       </list>
     </recent_temporary>
@@ -230,6 +238,15 @@
     <option name="LAST_COMMIT_MESSAGE" value="Added some tests for the Adam Functions" />
   </component>
   <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/VolvoTest.java</url>
+          <line>271</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
     <pin-to-top-manager>
       <pinned-members>
         <PinnedItemInfo parentTag="Volvo" memberName="parking_situation" />
@@ -238,11 +255,11 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/ParkingSystemWithMavenTesting$ParkingAnalyserTest_TestcalculateBestParkingSpot_emptyList_returnMinusOne.ic" NAME="ParkingAnalyserTest.TestcalculateBestParkingSpot_emptyList_returnMinusOne Coverage Results" MODIFIED="1695966969088" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/ParkingSystemWithMavenTesting$ParkingAnalyserTest.ic" NAME="ParkingAnalyserTest Coverage Results" MODIFIED="1695975643079" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/ParkingSystemWithMavenTesting$IntegrationTests.ic" NAME="IntegrationTests Coverage Results" MODIFIED="1695975655821" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/ParkingSystemWithMavenTesting$LogicTest.ic" NAME="LogicTest Coverage Results" MODIFIED="1695987534782" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/ParkingSystemWithMavenTesting$VolvoActuatorsTest.ic" NAME="VolvoActuatorsTest Coverage Results" MODIFIED="1695968787937" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/ParkingSystemWithMavenTesting$VolvoTest.ic" NAME="VolvoTest Coverage Results" MODIFIED="1695975670216" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/ParkingSystemWithMavenTesting$ParkingAnalyserTest.ic" NAME="ParkingAnalyserTest Coverage Results" MODIFIED="1695992280668" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/ParkingSystemWithMavenTesting$IntegrationTests.ic" NAME="IntegrationTests Coverage Results" MODIFIED="1695992258685" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/ParkingSystemWithMavenTesting$LogicTest.ic" NAME="LogicTest Coverage Results" MODIFIED="1695992270988" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/ParkingSystemWithMavenTesting$VolvoActuatorsTest.ic" NAME="VolvoActuatorsTest Coverage Results" MODIFIED="1695992289132" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/ParkingSystemWithMavenTesting$VolvoTest.ic" NAME="VolvoTest Coverage Results" MODIFIED="1695992299467" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/ParkingSystemWithMavenTesting$IntegrationTests_integrationTest2.ic" NAME="IntegrationTests.integrationTest2 Coverage Results" MODIFIED="1695975628580" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

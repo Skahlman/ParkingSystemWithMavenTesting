@@ -22,6 +22,7 @@ public class VolvoTest {
     LogicClass logic;
     private SensorClass realSensor;
     private ParkingAnalyser analyserMock;
+    private VolvoActuators actuator;
 
 
     @BeforeEach
@@ -33,6 +34,7 @@ public class VolvoTest {
         analyserMock = Mockito.spy(ParkingAnalyser.class);
         realSensor = new SensorClass();
         car = new Volvo(sensorMock);
+        actuator = new VolvoActuators();
 
 
     }
@@ -43,7 +45,7 @@ public class VolvoTest {
     public void TestisEmpty_returnsTrue()
     {
         // Arrange – position is 0 and that metre is free
-        car.position = 0;
+        car.actuator.position = 0;
         car.parking_situation[0] = true;
         // Act – perform the actual work of the test.
         int result = car.isEmpty();
@@ -54,7 +56,7 @@ public class VolvoTest {
     @Ignore
     public void TestisEmpty_returnsFalse(){
         // Arrange
-        car.position = 0;
+        car.actuator.position = 0;
         car.parking_situation[0] = false;
         // Act
         int result = car.isEmpty();
@@ -84,20 +86,20 @@ public class VolvoTest {
         //Act
         car.MoveForward();
         //Assert
-        assertEquals(expectedPosition, car.position);
+        assertEquals(expectedPosition, car.actuator.position);
     }
    
 
     @Test
     public void TestMoveForward_EndOfStreet_CanNotMoveForward(){
         //Arrange
-        car.position = 499;
+        car.actuator.position = 499;
         int expectedPosition = 499;
         //Act
         MoveReturnStruct move = car.MoveForward();
         //Assert
         assertEquals(expectedPosition, move.position()); // car is still standing at 500
-         assertEquals(expectedPosition, car.position); // car is still standing at 500
+         assertEquals(expectedPosition, car.actuator.position); // car is still standing at 500
 
     }
 
@@ -118,7 +120,7 @@ public class VolvoTest {
     @Test
     public void TestMoveBackward_BeginningOfStreet_CanNotMoveBackward(){
         //Arrange
-        car.position = 0;
+        car.actuator.position = 0;
         int expectedPosition = 0;
         int resultPosition;
         //Act
@@ -130,8 +132,9 @@ public class VolvoTest {
 
      @Test
     public void TestMoveBackward_SuccessfullyMovesBackward() { //Adams move backward
-        car.position = 2;
-        assertEquals(car.MoveBackward().position(),1);
+        car.actuator.position = 2;
+        car.MoveBackward();
+        assertEquals(1, car.actuator.position);
     }
 
 
@@ -145,7 +148,7 @@ public class VolvoTest {
         when(sensorMock.readSensor2()).thenReturn(200); 
         boolean parked;
         car.isParked = false;
-        car.position = 0;
+        car.actuator.position = 0;
         //car.position = 10;
         //Act
         parked = car.Park();
@@ -186,7 +189,7 @@ public class VolvoTest {
     @Test
     public void TestPark_EndOfStreetAndFree5MetersBehind_DontPark() {
         //volvoMock.position = 500;
-        car.position = 499;
+        car.actuator.position = 499;
         for(int i = 495; i < 500; i++)
             car.parking_situation[i] = true;
                                                  
@@ -204,7 +207,7 @@ public class VolvoTest {
     @Test // rad 92 i
     public void TestPark_EndOFStreet_NoPositionsAvaliable()
     {
-        car.position = 499;
+        car.actuator.position = 499;
         ArrayList<EndOfParkingPlaceStruct> list = new ArrayList<EndOfParkingPlaceStruct>();
         when(analyserMock.calculateBestParkingSpot(list)).thenReturn(-1);
         boolean result = car.Park();

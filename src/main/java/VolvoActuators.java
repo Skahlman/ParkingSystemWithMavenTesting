@@ -1,9 +1,15 @@
 public class VolvoActuators implements Actuator{
 
-    public VolvoActuators(){}
+  public int position;
+    public VolvoActuators()
+    {
+        this.position = 0;
+    }
+
+
 
      /*
-    pre-condotion: position > 0
+    pre-condition: position > 0
 
     post-condition: returns true if the next position of the car would be okay to move to 
 
@@ -15,7 +21,7 @@ public class VolvoActuators implements Actuator{
                 insideLimits is also mocked using mockito inside the integrationsTests.java class
     */ 
     @Override
-    public boolean insideLimits(int position, boolean forward){
+    public boolean moveIfAllowed(boolean forward){
 
         //pre-condition
         if(position < 0) 
@@ -25,8 +31,15 @@ public class VolvoActuators implements Actuator{
         {
             return false;
         }
-        
+
+        if(forward)
+            position++;
+        else
+            position--;
+
         return true; //Fullfills testcase [3] & [4]
     }
+
+
     
 }

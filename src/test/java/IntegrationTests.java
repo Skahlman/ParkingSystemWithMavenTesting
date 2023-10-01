@@ -33,7 +33,7 @@ public class IntegrationTests {
         Unparks the car and drive to the end of the street. */
     public void integrationTest1(){
 
-        car.position = 0; //Starts at the beginning of the street
+        car.actuator.position = 0; //Starts at the beginning of the street
         int length = car.parking_situation.length;
       
         /* scans the whole street for avaliable parking spots. 
@@ -41,7 +41,7 @@ public class IntegrationTests {
          */
         for(int i = 0; i < length; i++) 
         {
-            Mockito.when(actuator_mock.insideLimits(i,true)).thenReturn(true); // actuators should always say its okay to move forward here
+            Mockito.when(actuator_mock.moveIfAllowed(true)).thenReturn(true); // actuators should always say its okay to move forward here
 
         
             if(i >= 5 && i <= 9 || i >= 100 && i <= 119 || i >= 300 && i <= 310 ) //free parking spot between 5 and 9 meters, 100 and 119 meters, 300 and 310 meters
@@ -61,17 +61,17 @@ public class IntegrationTests {
         car.Park(); // Parks the car, should park at position 5-9
         assertTrue(car.isParked);
         int expected_position = 5;
-        assertEquals(expected_position, car.position); //check if the car is at position 5
+        assertEquals(expected_position,  car.actuator.position); //check if the car is at position 5
 
         car.UnPark(); //unparks the car
 
         assertFalse(car.isParked); //check is car unparked successfully
 
 
-        while(car.position <499)
+        while( car.actuator.position <499)
             car.MoveForward(); //moves the car to the end of the street
 
-        assertEquals(499,car.position); //check if car is at the end of the street
+        assertEquals(499, car.actuator.position); //check if car is at the end of the street
 
     }
 
@@ -87,7 +87,7 @@ public class IntegrationTests {
      */
     public void integrationTest2()
     {
-         car.position = 0; //Starts at the beginning of the street
+        car.actuator.position = 0; //Starts at the beginning of the street
         int length = car.parking_situation.length;
       
         //sensor values for broken sensor:
@@ -99,7 +99,7 @@ public class IntegrationTests {
 
         for(int i = 0; i < length; i++) 
         {
-            Mockito.when(actuator_mock.insideLimits(i,true)).thenReturn(true); // actuators should always say its okay to move forward here
+            Mockito.when(actuator_mock.moveIfAllowed(true)).thenReturn(true); // actuators should always say its okay to move forward here
 
         
             if(i == 250) //sensor 1 should break
@@ -127,7 +127,7 @@ public class IntegrationTests {
         }
 
         int expected_position = 251; //the car is expected to park right after the sensor broke down
-        assertEquals(expected_position, car.position); //check if car parked at the position right after sensor1 broke down
+        assertEquals(expected_position,  car.actuator.position); //check if car parked at the position right after sensor1 broke down
         assertTrue(car.isParked); // doublecheck that it really is parked
 
         car.UnPark(); //unparks the car
@@ -162,7 +162,7 @@ public class IntegrationTests {
     out-of-bound values. */
     public void integrationTest3()
     {
-        car.position = 0; //Starts at the beginning of the street
+        car.actuator.position = 0; //Starts at the beginning of the street
         int length = car.parking_situation.length;
 
         /* scans the whole street for avaliable parking spots.
@@ -170,7 +170,7 @@ public class IntegrationTests {
          */
         for(int i = 0; i < length; i++)
         {
-            Mockito.when(actuator_mock.insideLimits(i,true)).thenReturn(true); // actuators should always say its okay to move forward here
+            Mockito.when(actuator_mock.moveIfAllowed(true)).thenReturn(true); // actuators should always say its okay to move forward here
 
 
             if(i >= 5 && i <= 9 || i >= 260 && i <= 266 || i >= 300 && i <= 303 ) //free parking spot between 5 and 9 meters, 100 and 119 meters. too small parking spot between 300 and 303
@@ -209,7 +209,7 @@ public class IntegrationTests {
         car.Park(); // park the car
 
         int expected_position = 5;
-        assertEquals(expected_position, car.position); //check if the car is at position 5, (the best parking spot)
+        assertEquals(expected_position,  car.actuator.position); //check if the car is at position 5, (the best parking spot)
 
 
 
