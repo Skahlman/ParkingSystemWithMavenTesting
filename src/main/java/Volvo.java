@@ -13,11 +13,22 @@ public class Volvo implements Car {
     boolean sensor1working = true, sensor2working= true;
     int sensor1WorkingCounter, sensor2WorkingCounter = 0;
     LogicClass logic;
+    ParkingAnalyser analyser;
 
     public Volvo(SensorClass sensor){
         this.parking_situation = new boolean[500]; //initialize parking spots
         this.actuator = new VolvoActuators();
         this.sensorClass = sensor;
+        this.logic = new LogicClass();
+        this.analyser = new ParkingAnalyser();
+    }
+
+    public Volvo(SensorClass sensor, VolvoActuators actuator, ParkingAnalyser analyser){
+        this.parking_situation = new boolean[500]; //initialize parking spots
+        this.actuator = new VolvoActuators();
+        this.sensorClass = sensor;
+        this.actuator = actuator;
+        this.analyser = analyser;
         this.logic = new LogicClass();
     }
 
@@ -59,7 +70,6 @@ public class Volvo implements Car {
         if(isParked) // Fulfills testcase [9]: if it is already parked, then return
             return false; //did not park because it is already parked
 
-        ParkingAnalyser analyser = new ParkingAnalyser();
 
         while(actuator.position < 499) { //
             boolean canPark = analyser.checkIfFreeParkingSpot(actuator.position, this.parking_situation); //check if the latest 5 metres are free, fulfills the testcase "can park"

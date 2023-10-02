@@ -1,6 +1,11 @@
 import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
 import org.mockito.Mockito;
 import org.junit.Before;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 import static org.junit.Assert.assertEquals;
@@ -16,9 +21,9 @@ public class IntegrationTests {
     @Before
     public void init(){
         analyser_mock = Mockito.mock(ParkingAnalyser.class);
-        actuator_mock = Mockito.mock(VolvoActuators.class);
+        actuator_mock = Mockito.spy(VolvoActuators.class);
         sensor_mock = Mockito.mock(SensorClass.class);
-        car = new Volvo(sensor_mock);
+        car = new Volvo(sensor_mock,actuator_mock, analyser_mock);
         analyser = new ParkingAnalyser();
     }
 
@@ -30,17 +35,16 @@ public class IntegrationTests {
         Unparks the car and drive to the end of the street. */
     public void integrationTest1(){
 
-        car.actuator.position = 0; //Starts at the beginning of the street
+        actuator_mock.position = 0; //Starts at the beginning of the street
         int length = car.parking_situation.length;
       
         /* scans the whole street for avaliable parking spots. 
          * the values from the sensors are mocked to indicate free spots at position 5-9 and position 100-119 and position 300-310.
          */
+        //Mockito.when(actuator_mock.moveIfAllowed(true)).thenReturn(true); // actuators should always say its okay to move forward here
+        //Mockito.when(actuator_mock.moveIfAllowed(true)).thenCallRealMethod();
         for(int i = 0; i < length; i++) 
         {
-            Mockito.when(actuator_mock.moveIfAllowed(true)).thenReturn(true); // actuators should always say its okay to move forward here
-
-        
             if(i >= 5 && i <= 9 || i >= 100 && i <= 119 || i >= 300 && i <= 310 ) //free parking spot between 5 and 9 meters, 100 and 119 meters, 300 and 310 meters
             {
                 Mockito.when(sensor_mock.readSensor1()).thenReturn(150); 
@@ -94,11 +98,10 @@ public class IntegrationTests {
         int sensorValue4 = 134;
         int sensorValue5 = 500;
 
+        Mockito.when(actuator_mock.moveIfAllowed(true)).thenReturn(true); // actuators should always say its okay to move forward here
+
         for(int i = 0; i < length; i++) 
         {
-            Mockito.when(actuator_mock.moveIfAllowed(true)).thenReturn(true); // actuators should always say its okay to move forward here
-
-        
             if(i == 250) //sensor 1 should break
             {
                 when(sensor_mock.readSensor1()).thenReturn(sensorValue1, sensorValue2, sensorValue3, sensorValue4, sensorValue5);
@@ -163,10 +166,9 @@ public class IntegrationTests {
         /* scans the whole street for avaliable parking spots.
          * the values from the sensors are mocked to indicate free spots at position 5-9 and position 260-266.
          */
+        Mockito.when(actuator_mock.moveIfAllowed(true)).thenReturn(true); // actuators should always say its okay to move forward here
         for(int i = 0; i < length; i++)
         {
-            Mockito.when(actuator_mock.moveIfAllowed(true)).thenReturn(true); // actuators should always say its okay to move forward here
-
             if(i >= 5 && i <= 9 || i >= 260 && i <= 266 || i >= 300 && i <= 303 ) //free parking spot between 5 and 9 meters, 100 and 119 meters. too small parking spot between 300 and 303
             {
                 if(i >= 250) //  sensor 1 should break down
@@ -202,5 +204,19 @@ public class IntegrationTests {
 
         assertEquals(expected_position,  car.actuator.position); //check if the car is at position 5, (the best parking spot)
 
+    }
+
+    @Test
+    public void integrationTest4_achievesFullTestCovergare()
+    {
+        actuator_mock.position = 499;
+        Arrays.fill(car.parking_situation, true);
+        ArrayList<EndOfParkingPlaceStruct> list = new ArrayList<EndOfParkingPlaceStruct>(); // no added items to the list
+        EndOfParkingPlaceStruct a = new EndOfParkingPlaceStruct(9,5 ); // parking spot (a)
+        list.add(a);
+        Mockito.when(analyser_mock.parkingSpots(car.parking_situation)).thenReturn(list);
+        Mockito.when(analyser_mock.calculateBestParkingSpot(list)).thenReturn(-1);
+
+        assertFalse(car.Park());
     }
 }
