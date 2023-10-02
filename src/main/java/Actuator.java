@@ -2,7 +2,8 @@ public interface Actuator {
 
     /*
   pre-condition: position > 0
-  post-condition: returns true if the next position of the car would be okay to move to
+  post-condition: returns true if the next position of the car would be okay to move to.
+                   It also changes the position of the car if it was able to move.
   properties: if position < 500 and forward = true, moveIfAllowed(forward) = true
               if the car want to move backward when it's at position 0 or moveforward at position 500,
               moveIfAllowed will return false.
